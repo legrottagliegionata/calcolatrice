@@ -8,6 +8,11 @@ Poligono::Poligono(const std::vector<Vertice>& V):id(++n_poligoni),Lista(V){}
 
 Poligono::Poligono(const Poligono& P):id(++n_poligoni),Lista(P.Lista){}
 
+std::ostream& operator<< (std::ostream& os,Poligono& P){
+  for(auto it=P.Lista.begin();it!=P.Lista.end();it++){
+      os<<"("<<it->get_X()<<","<<it->get_Y()<<") ";
+    }
+}
 
 /* ------------------- */
 

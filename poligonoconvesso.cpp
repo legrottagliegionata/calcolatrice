@@ -1,14 +1,15 @@
 #include "poligonoconvesso.h"
-#include "vertice.h"
 PoligonoConvesso::PoligonoConvesso():Poligono(){}
 PoligonoConvesso::PoligonoConvesso(const PoligonoConvesso& p):Poligono(p){}
-PoligonoConvesso::PoligonoConvesso(const std::vector<Vertice>& V){}
+PoligonoConvesso::PoligonoConvesso(const std::vector<Vertice>& V):Poligono(V){}
+
+
+
 
 
 // Vertice having the least y coordinate, used for sorting other Vertices
 // according to polar angle about this Vertice
 Vertice pivot;
-
 // returns -1 if a -> b -> c forms a counter-clockwise turn,
 // +1 for a clockwise turn, 0 if they are collinear
 int ccw(Vertice a, Vertice b, Vertice c) {
@@ -19,13 +20,11 @@ int ccw(Vertice a, Vertice b, Vertice c) {
         return 1;
     return 0;
 }
-
 // returns square of Euclidean distance between two Points
 int sqrDist(Vertice a, Vertice b)  {
     int dx = a.get_X() - b.get_X(), dy = a.get_Y() - b.get_Y();
     return dx * dx + dy * dy;
 }
-
 // used for sorting Points according to polar order w.r.t the pivot
 bool POLAR_ORDER(Vertice a, Vertice b)  {
     int order = ccw(pivot, a, b);
@@ -33,12 +32,26 @@ bool POLAR_ORDER(Vertice a, Vertice b)  {
         return sqrDist(pivot, a) < sqrDist(pivot, b);
     return (order == -1);
 }
+bool checkVector(vector<Vertice>&Points){
+   bool X=false,Y=false;
+   if(Points.size()>0){
+       double x = Points[0].get_X(), y=Points[0].get_Y();
 
+       for(auto it=Points.begin();it!=Points.end();it++){
+         if(x != it->get_X()) X=true;
+         if(y != it->get_Y()) Y=true;
+         x= it->get_X();
+         y= it->get_Y();
+         }
+     }else return false;
+   if(!X || !Y) return false;
+   else return true;
+}
 vector<Vertice> grahamScan(vector<Vertice>& Points)    {
 
     vector<Vertice> hull;
     int N= Points.size();
-    if (N < 3)
+    if (N < 3 || !checkVector(Points))
         return hull;
 
     // find the Vertice having the least y coordinate (pivot),
@@ -48,7 +61,7 @@ vector<Vertice> grahamScan(vector<Vertice>& Points)    {
         if (Points[i] < Points[leastY])
             leastY = i;
 
-    // swap the pivot with the first Vertice
+    // swap the pivot with the first vertice
     Vertice temp = Points[0];
     Points[0] = Points[leastY];
     Points[leastY] = temp;
@@ -63,7 +76,6 @@ vector<Vertice> grahamScan(vector<Vertice>& Points)    {
     for (int i = 3; i < N; i++) {
         Vertice top = hull[hull.size()-1];
         hull.pop_back();
-
         while (ccw(hull[hull.size()-1], top, Points[i]) != -1)   {
             top = hull[hull.size()-1];
             hull.pop_back();

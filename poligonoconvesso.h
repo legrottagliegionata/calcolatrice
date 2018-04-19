@@ -4,7 +4,7 @@
 #include "poligono.h"
 #include <stack>
 #include <algorithm>
-using namespace std;
+using std::vector;
 class PoligonoConvesso : public Poligono
 {
 public:
