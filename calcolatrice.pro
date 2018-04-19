@@ -17,9 +17,11 @@ DEFINES += QT_DEPRECATED_WARNINGS
 SOURCES += main.cpp \
     punto.cpp \
     vertice.cpp \
-    poligono.cpp
+    poligono.cpp \
+    poligonoconvesso.cpp
 
 HEADERS += \
     punto.h \
     vertice.h \
-    poligono.h
+    poligono.h \
+    poligonoconvesso.h

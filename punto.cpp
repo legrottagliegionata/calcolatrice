@@ -9,6 +9,12 @@ double Punto:: get_Y()const{return y;}
 //overraiding operatori
 bool Punto::operator==(const Punto& p)const{	return x == p.x && y == p.y;}
 bool Punto::operator!=(const Punto& p)const{	return x != p.x || y != p.y;}
+bool Punto::operator<(const Punto& p)const{
+  if (y != p.y)
+      return y < p.y;
+  return x < p.x;
+}
+
 
 double distanza(const Punto& p1, const Punto& p2)
 {

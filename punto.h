@@ -9,6 +9,7 @@ class Punto
 	private:
 		double x,y;
 	public:
+		Punto() =default;
 		Punto(double,double);
 		Punto(const Punto&);
 		virtual ~Punto()=default;
@@ -18,6 +19,8 @@ class Punto
 //		overraiding operatori
 		virtual bool operator==(const Punto&)const;
 		virtual bool operator!=(const Punto&)const;
+		virtual bool operator<(const Punto&)const;
+
 };
 
 double distanza(const Punto&, const Punto&);

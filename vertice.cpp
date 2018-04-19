@@ -12,3 +12,6 @@ double AngoloVertici(const Vertice &b, const Punto &a, const Punto &c){
     double alpha = atan2(cross, dot);
     return (alpha * 180 / M_PI);
 }
+
+
+

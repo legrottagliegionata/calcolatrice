@@ -7,6 +7,7 @@
 class Vertice: public Punto
 {
 	public:
+		Vertice()=default;
 		Vertice(double,double);
 		Vertice(const Vertice&);
 
