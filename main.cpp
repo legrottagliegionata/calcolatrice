@@ -3,8 +3,7 @@
 #include<iostream>
 
 using namespace std;
-#include "poligonoconvesso.h"
-
+#include "triangolo.h"
 
 
 int main(int argc, char *argv[])
@@ -22,13 +21,8 @@ int main(int argc, char *argv[])
     P.push_back(v3);
     P.push_back(v4);
     P.push_back(v5);
-    vector<Vertice> hull = grahamScan(P);
-    cout<<hull.size();
-    while (!hull.empty())   {
-        Vertice p = hull[hull.size()-1];
-        hull.pop_back();
-        std::cout<<"("<<p.get_X()<<","<<p.get_Y()<<")"<<endl;
-    }
+    Triangolo T( grahamScan(P));
+    cout<<T;
 
     return a.exec();
   }

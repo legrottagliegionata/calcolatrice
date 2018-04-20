@@ -2,7 +2,7 @@
 #define POLIGONOCONVESSO_H
 
 #include "poligono.h"
-#include <stack>
+#include <stdexcept>
 #include <algorithm>
 using std::vector;
 class PoligonoConvesso : public Poligono
@@ -11,6 +11,7 @@ public:
   PoligonoConvesso();
   PoligonoConvesso(const PoligonoConvesso&);
   PoligonoConvesso(const std::vector<Vertice>&);
+  virtual unsigned int size() const;
   virtual double get_perimetro() const =0;
   virtual double get_area() const =0;
 };

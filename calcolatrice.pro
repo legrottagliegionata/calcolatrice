@@ -18,10 +18,12 @@ SOURCES += main.cpp \
     punto.cpp \
     vertice.cpp \
     poligono.cpp \
-    poligonoconvesso.cpp
+    poligonoconvesso.cpp \
+    triangolo.cpp
 
 HEADERS += \
     punto.h \
     vertice.h \
     poligono.h \
-    poligonoconvesso.h
+    poligonoconvesso.h \
+    triangolo.h

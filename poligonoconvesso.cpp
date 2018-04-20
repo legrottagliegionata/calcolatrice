@@ -1,8 +1,15 @@
 #include "poligonoconvesso.h"
 PoligonoConvesso::PoligonoConvesso():Poligono(){}
 PoligonoConvesso::PoligonoConvesso(const PoligonoConvesso& p):Poligono(p){}
-PoligonoConvesso::PoligonoConvesso(const std::vector<Vertice>& V):Poligono(V){}
-
+PoligonoConvesso::PoligonoConvesso(const std::vector<Vertice>& V){
+  try{
+    Lista= grahamScan(const_cast<vector<Vertice>&>(V));
+  }
+  catch(std::invalid_argument& e){
+    std::cerr << e.what() << std::endl;
+  }
+}
+unsigned int PoligonoConvesso::size()const{return Lista.size();}
 
 
 
@@ -52,7 +59,7 @@ vector<Vertice> grahamScan(vector<Vertice>& Points)    {
     vector<Vertice> hull;
     int N= Points.size();
     if (N < 3 || !checkVector(Points))
-        return hull;
+        throw  std::invalid_argument("Vertici non validi per la creazione di un Poligono.");
 
     // find the Vertice having the least y coordinate (pivot),
     // ties are broken in favor of lower x coordinate
@@ -81,10 +88,9 @@ vector<Vertice> grahamScan(vector<Vertice>& Points)    {
             hull.pop_back();
         }
         hull.push_back(top);
-        hull.push_back(Points[i]);
+        hull.push_back(Points[i]);   
     }
-
-
+    std::reverse(hull.begin(),hull.end());
     return hull;
 }
 

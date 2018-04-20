@@ -6,7 +6,7 @@
 #include<iostream>
 class Poligono
 {
-	friend std::ostream& operator<< (std::ostream&,Poligono&);
+	friend std::ostream& operator<< (std::ostream&,const Poligono&);
 	private:
 		static unsigned int n_poligoni;
 	protected:
