@@ -10,24 +10,23 @@ int main(int argc, char *argv[])
 {
  // QCoreApplication a(argc, argv);
 
-    Vertice *v1= new Vertice(0,5);
-    Vertice *v2= new Vertice(0,5);
-    Vertice *v3= new Vertice(0,5);
-    Vertice *v4= new Vertice(0,5);
-    Vertice *v5= new Vertice(0,5);
+    Vertice v1(0,0);
+    Vertice v2(0,5);
+    Vertice v3(5,5);
+    Vertice v4(5,0);
 
 
     vector<Vertice> P;
-    P.push_back(*v1);
-    P.push_back(*v3);
-    P.push_back(*v2);
-    P.push_back(*v4);
-    P.push_back(*v5);
+    P.push_back(v1);
+    P.push_back(v3);
+    P.push_back(v2);
 
     try{
     Shape* T= crea_poligono(P);
+    Shape* Q= static_cast<PoligonoConvesso*>(T)->aggiungi_vertice(v4) ;
     cout<<*T;
     delete T;
+    cout<<*Q;
     }
     catch(std::invalid_argument& e){
       std::cerr << e.what() << std::endl;

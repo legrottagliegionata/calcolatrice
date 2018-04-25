@@ -14,6 +14,8 @@ public:
   virtual double get_perimetro() const =0;
   virtual double get_area() const =0;
 
+  Shape* aggiungi_vertice(const Vertice&);
+
 protected:
   virtual string toString() const =0;
   std::vector<Vertice> Lista;

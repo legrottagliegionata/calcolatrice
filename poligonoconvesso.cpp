@@ -5,7 +5,11 @@ PoligonoConvesso::PoligonoConvesso(const PoligonoConvesso& p):Shape(),Lista(p.Li
 PoligonoConvesso::PoligonoConvesso(const vector<Vertice>& V):Shape(),Lista(V){}
 unsigned int PoligonoConvesso::size()const{return Lista.size();}
 
-
+Shape* PoligonoConvesso::aggiungi_vertice(const Vertice& v){
+  vector<Vertice> newVector(Lista);
+  newVector.push_back(v);
+  return crea_poligono(newVector);
+}
 
 
 // Le prossime funzioni vengono utilizzate per filtrare il vector<Vertice> che viene utilizzato per costruire
@@ -45,7 +49,7 @@ bool checkVector(vector<Vertice>&Points){
       double angolo=  get_Angolo(Points[b],Points[a],Points[c]);
       if(angolo >= 180) return false;
       somma+= angolo;
-      if(somma > (180*(Points.size()-2))) return false;
+      if(somma > (180*(Points.size()-2)) || somma==0) return false;
     }
     return true;
 }
@@ -119,8 +123,7 @@ Shape* crea_poligono(vector<Vertice>& V){
   catch(std::invalid_argument& e){
     std::cerr << e.what() << std::endl;
   }
-
-
+  return 0;
 }
 
 
