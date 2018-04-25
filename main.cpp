@@ -1,7 +1,7 @@
 #include <QCoreApplication>
 
 #include<iostream>
-#include "triangolo.h"
+#include"poligonoconvesso.h"
 using namespace std;
 
 
@@ -10,18 +10,19 @@ int main(int argc, char *argv[])
 {
  // QCoreApplication a(argc, argv);
 
-    Vertice v1(0,0);
-    Vertice v2(1,1);
-    Vertice v3(10,1);
-    Vertice v4(-1,0.5);
-    Vertice v5(0,0);
+    Vertice *v1= new Vertice(0,5);
+    Vertice *v2= new Vertice(0,5);
+    Vertice *v3= new Vertice(0,5);
+    Vertice *v4= new Vertice(0,5);
+    Vertice *v5= new Vertice(0,5);
+
 
     vector<Vertice> P;
-    P.push_back(v1);
-    P.push_back(v3);
-    P.push_back(v2);
-    P.push_back(v4);
-    P.push_back(v5);
+    P.push_back(*v1);
+    P.push_back(*v3);
+    P.push_back(*v2);
+    P.push_back(*v4);
+    P.push_back(*v5);
 
     try{
     Shape* T= crea_poligono(P);
