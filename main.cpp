@@ -8,7 +8,7 @@ using namespace std;
 
 int main(int argc, char *argv[])
 {
-  QCoreApplication a(argc, argv);
+ // QCoreApplication a(argc, argv);
 
     Vertice v1(0,0);
     Vertice v2(1,1);
@@ -26,13 +26,15 @@ int main(int argc, char *argv[])
     try{
     Shape* T= crea_poligono(P);
     cout<<*T;
+    delete T;
     }
     catch(std::invalid_argument& e){
       std::cerr << e.what() << std::endl;
     }
-    int *x= new int(5);
-    x=new int(8);
 
 
-    return a.exec();
+
+    //return a.exec();
   }
+// valgrind --vgdb=yes --leak-check=full --show-leak-kinds=all ./calcolatrice
+
