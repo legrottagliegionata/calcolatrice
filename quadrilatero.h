@@ -1,12 +1,13 @@
-#ifndef TRIANGOLO_H
-#define TRIANGOLO_H
+#ifndef QUADRILATERO_H
+#define QUADRILATERO_H
+
 #include "poligonoconvesso.h"
-class Triangolo: public PoligonoConvesso
+class Quadrilatero: public PoligonoConvesso
 {
-  friend std::ostream& operator<< (std::ostream&,const Triangolo&);
+  friend std::ostream& operator<< (std::ostream&,const Quadrilatero&);
   friend Shape* crea_poligono(vector<Vertice>&);
 public:
-  Triangolo(const Triangolo&);
+  Quadrilatero(const Quadrilatero&);
 
 
   virtual double get_altezza(const Vertice&)const;
@@ -15,7 +16,8 @@ public:
   virtual double get_area() const;
 protected:
   virtual string toString() const;
-  Triangolo(const vector<Vertice>&);
+  Quadrilatero(const vector<Vertice>&);
 };
 
-#endif // TRIANGOLO_H
+
+#endif // QUADRILATERO_H

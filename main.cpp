@@ -1,9 +1,9 @@
 #include <QCoreApplication>
 
 #include<iostream>
-
-using namespace std;
 #include "triangolo.h"
+using namespace std;
+
 
 
 int main(int argc, char *argv[])
@@ -11,18 +11,28 @@ int main(int argc, char *argv[])
   QCoreApplication a(argc, argv);
 
     Vertice v1(0,0);
-    Vertice v2(0,1);
-    Vertice v3(0,2);
-    Vertice v4(0,-1);
-    Vertice v5(0,4);
+    Vertice v2(1,1);
+    Vertice v3(10,1);
+    Vertice v4(-1,0.5);
+    Vertice v5(0,0);
+
     vector<Vertice> P;
     P.push_back(v1);
-    P.push_back(v2);
     P.push_back(v3);
+    P.push_back(v2);
     P.push_back(v4);
     P.push_back(v5);
-    Triangolo T( grahamScan(P));
-    cout<<T;
+
+    try{
+    Shape* T= crea_poligono(P);
+    cout<<*T;
+    }
+    catch(std::invalid_argument& e){
+      std::cerr << e.what() << std::endl;
+    }
+    int *x= new int(5);
+    x=new int(8);
+
 
     return a.exec();
   }

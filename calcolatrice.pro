@@ -17,13 +17,15 @@ DEFINES += QT_DEPRECATED_WARNINGS
 SOURCES += main.cpp \
     punto.cpp \
     vertice.cpp \
-    poligono.cpp \
     poligonoconvesso.cpp \
-    triangolo.cpp
+    triangolo.cpp \
+    shape.cpp \
+    quadrilatero.cpp
 
 HEADERS += \
     punto.h \
     vertice.h \
-    poligono.h \
     poligonoconvesso.h \
-    triangolo.h
+    triangolo.h \
+    shape.h \
+    quadrilatero.h

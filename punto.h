@@ -3,6 +3,8 @@
 
 
 #include <ostream>
+#include<string>
+using std::string;
 #include <cmath>
 class Punto
 {
@@ -15,6 +17,8 @@ class Punto
 		virtual ~Punto()=default;
 		double get_X()const;
 		double get_Y()const;
+		std::string get_X_string() const;
+		std::string get_Y_string() const;
 
 //		overraiding operatori
 		virtual bool operator==(const Punto&)const;
@@ -22,7 +26,7 @@ class Punto
 		virtual bool operator<(const Punto&)const;
 
 };
-
+string remove_zeros(double);
 double distanza(const Punto&, const Punto&);
 std::ostream& operator<<(std::ostream&,Punto&);
 
