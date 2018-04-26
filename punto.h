@@ -5,6 +5,7 @@
 #include <ostream>
 #include<string>
 using std::string;
+#include"fun_aux.h"
 #include <cmath>
 class Punto
 {
@@ -17,8 +18,7 @@ class Punto
 		virtual ~Punto()=default;
 		double get_X()const;
 		double get_Y()const;
-		std::string get_X_string() const;
-		std::string get_Y_string() const;
+		virtual std::string toString() const;
 
 //		overraiding operatori
 		virtual bool operator==(const Punto&)const;

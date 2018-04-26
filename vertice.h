@@ -10,6 +10,7 @@ class Vertice: public Punto
 		Vertice()=default;
 		Vertice(double,double);
 		Vertice(const Vertice&);
+		std::string toString() const;
 
 };
 

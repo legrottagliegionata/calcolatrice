@@ -13,6 +13,7 @@ public:
   virtual unsigned int size() const;
   virtual double get_perimetro() const =0;
   virtual double get_area() const =0;
+  virtual void set_lati(const vector<Vertice>&)  =0;
 
   Shape* aggiungi_vertice(const Vertice&);
 

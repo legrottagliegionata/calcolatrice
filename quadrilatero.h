@@ -10,13 +10,16 @@ public:
   Quadrilatero(const Quadrilatero&);
 
 
-  virtual double get_altezza(const Vertice&)const;
+  //virtual double get_altezza(const Vertice&)const;
   virtual unsigned int size() const;
   virtual double get_perimetro() const;
   virtual double get_area() const;
 protected:
   virtual string toString() const;
   Quadrilatero(const vector<Vertice>&);
+  double lati[4];
+private:
+  void set_lati(const vector<Vertice>&);
 };
 
 
