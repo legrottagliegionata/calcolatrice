@@ -1,7 +1,5 @@
 #include "quadrilatero.h"
 
-
-Quadrilatero::Quadrilatero(const Quadrilatero & T):PoligonoConvesso(T){set_lati(T.Lista);}
 Quadrilatero::Quadrilatero(const vector<Vertice>&V):PoligonoConvesso(V,4,"Quadrilatero"){
   set_lati(V);
 }

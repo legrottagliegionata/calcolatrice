@@ -27,3 +27,19 @@ double distanza(const Punto& p1, const Punto& p2)
 std::ostream& operator<<(std::ostream& os,Punto& p){
         return os<<"("<<p.get_X()<<","<<p.get_Y()<<")";
 }
+
+std::string to_string_nozero(double a){
+  std::string s= std::to_string(a);
+  int i=s.size()-1;
+  bool out=false;
+  while(s[i] != '.' && !out){
+      if(s[i] == '0'){
+        s.erase(s.size()-1,1);
+        i--;
+        }
+      else
+        out=true;
+    }
+  if(s[i]=='.') s.erase(s.size()-1,1);
+  return s;
+}

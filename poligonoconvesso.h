@@ -26,6 +26,5 @@ vector<Vertice> grahamScan(vector<Vertice>&);
 bool POLAR_ORDER(Vertice a, Vertice b);
 int sqrDist(Vertice a, Vertice b);
 int ccw(Vertice a, Vertice b, Vertice c);
-
 Shape* crea_poligono(vector<Vertice>& V);
 #endif // POLIGONOCONVESSO_H

@@ -5,7 +5,6 @@
 #include <ostream>
 #include<string>
 using std::string;
-#include"fun_aux.h"
 #include <cmath>
 class Punto
 {
@@ -26,7 +25,7 @@ class Punto
 		virtual bool operator<(const Punto&)const;
 
 };
-string remove_zeros(double);
+std::string to_string_nozero(double a);
 double distanza(const Punto&, const Punto&);
 std::ostream& operator<<(std::ostream&,Punto&);
 

@@ -2,14 +2,15 @@
 
 #include<iostream>
 #include"poligonoconvesso.h"
-
+#include"triangolo.h"
+#include"quadrilatero.h"
 using namespace std;
 
 
 
 int main(int argc, char *argv[])
 {
- // QCoreApplication a(argc, argv);
+  QCoreApplication a(argc, argv);
 
     Vertice v1(1,5);
     Vertice v2(0,0);
@@ -21,12 +22,12 @@ int main(int argc, char *argv[])
     P.push_back(v1);
     P.push_back(v3);
     P.push_back(v2);
-
+    P.push_back(v4);
     try{
-    Shape* T= crea_poligono(P);
+    Shape* T= new Triangolo(P);
     Shape* Q= static_cast<PoligonoConvesso*>(T)->aggiungi_vertice(v4) ;
-    //cout<<"area quad: "<<static_cast<PoligonoConvesso*>(Q)->get_area()<<endl ;
-    //cout<<*T<<endl;
+    cout<<"area quad: "<<static_cast<PoligonoConvesso*>(Q)->get_area()<<endl ;
+    cout<<*T<<endl;
     delete T;
     //cout<<*Q<<endl;
     }
@@ -34,7 +35,7 @@ int main(int argc, char *argv[])
       std::cerr << e.what() << std::endl;
     }
 
-    //return a.exec();
+    return a.exec();
   }
 // valgrind --vgdb=yes --leak-check=full --show-leak-kinds=all ./calcolatrice
 

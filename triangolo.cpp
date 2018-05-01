@@ -1,8 +1,4 @@
 #include "triangolo.h"
-
-Triangolo::Triangolo(const Triangolo & T):PoligonoConvesso(T){set_lati(T.Lista);}
-
-
 Triangolo::Triangolo(const vector<Vertice>&V):PoligonoConvesso(V,3,"Triangolo"){
       set_lati(V);
 }
