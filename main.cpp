@@ -22,14 +22,23 @@ int main(int argc, char *argv[])
     P.push_back(v1);
     P.push_back(v3);
     P.push_back(v2);
-    P.push_back(v4);
     try{
-    Shape* T= new Triangolo(P);
-    Shape* Q= static_cast<PoligonoConvesso*>(T)->aggiungi_vertice(v4) ;
-    cout<<"area quad: "<<static_cast<PoligonoConvesso*>(Q)->get_area()<<endl ;
-    cout<<*T<<endl;
-    delete T;
-    //cout<<*Q<<endl;
+      Shape *p = crea_poligono(P);
+      cout<<p->get_id()<<std::endl;
+
+      Shape* x = crea_poligono(static_cast<PoligonoConvesso*>(p));
+      cout<<"Id: "<<x->get_id()<<std::endl;
+
+    }
+    catch(std::invalid_argument& e){
+      std::cerr << e.what() << std::endl;
+    }
+
+
+
+    try{
+      Shape* q = new Triangolo(P);
+      cout<<"Id: "<<q->get_id()<<std::endl;
     }
     catch(std::invalid_argument& e){
       std::cerr << e.what() << std::endl;

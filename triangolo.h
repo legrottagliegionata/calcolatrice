@@ -13,9 +13,10 @@ public:
   virtual unsigned int size() const;
   virtual double get_perimetro() const;
   virtual double get_area() const;
-   Triangolo(const vector<Vertice>&);
-protected:
+  Triangolo(const vector<Vertice>&);
   virtual string toString() const;
+
+protected:
   double lati[3];
 private:
   void set_lati(const vector<Vertice>&);

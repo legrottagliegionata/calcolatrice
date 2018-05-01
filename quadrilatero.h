@@ -15,8 +15,9 @@ public:
   virtual double get_perimetro() const;
   virtual double get_area() const;
   Quadrilatero(const vector<Vertice>&);
-protected:
   virtual string toString() const;
+
+protected:
   double lati[4];
 private:
   void set_lati(const vector<Vertice>&);

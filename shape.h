@@ -11,21 +11,25 @@ using std::string;
 using std::stringstream;
 class Shape
 {
-	friend std::ostream& operator<< (std::ostream&,const Shape&);
-	private:
-		static unsigned int n_shape;
-	protected:
-		unsigned int id=0;
-		virtual string toString() const =0;
+    friend std::ostream& operator<< (std::ostream&,const Shape&);
 
-	public:
-		virtual ~Shape()=default;
-		Shape();
+    protected:
+            static void reduce_n_shape();
+            unsigned int id=0;
+            virtual string toString() const =0;
 
-		/*virtual bool operator==(const Poligono&)const ;
-		virtual bool operator!=(const Poligono&)const ;
-		virtual Poligono& operator+(const Poligono&);
-		virtual Poligono& operator-(const Poligono&);*/
+    public:
+            Shape(const Shape&);
+            virtual ~Shape()=default;
+            Shape();
+            unsigned int get_id() const;
+    private:
+            static unsigned int n_shape;
+
+            /*virtual bool operator==(const Poligono&)const ;
+            virtual bool operator!=(const Poligono&)const ;
+            virtual Poligono& operator+(const Poligono&);
+            virtual Poligono& operator-(const Poligono&);*/
 };
 
 #endif // SHAPE_H

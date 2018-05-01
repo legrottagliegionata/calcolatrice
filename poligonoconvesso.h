@@ -5,12 +5,15 @@
 #include <stdexcept>
 #include <algorithm>
 using std::vector;
+
 class PoligonoConvesso : public Shape
 {
 public:
   PoligonoConvesso();
   PoligonoConvesso(const PoligonoConvesso&);
   PoligonoConvesso(const std::vector<Vertice>&,unsigned int,string);
+  vector<Vertice> get_vertici()const;
+
   virtual unsigned int size() const;
   virtual double get_perimetro() const =0;
   virtual double get_area() const =0;
@@ -23,8 +26,9 @@ protected:
 };
 
 vector<Vertice> grahamScan(vector<Vertice>&);
-bool POLAR_ORDER(Vertice a, Vertice b);
-int sqrDist(Vertice a, Vertice b);
-int ccw(Vertice a, Vertice b, Vertice c);
-Shape* crea_poligono(vector<Vertice>& V);
+bool POLAR_ORDER(Vertice, Vertice);
+int sqrDist(Vertice, Vertice);
+int ccw(Vertice, Vertice, Vertice);
+Shape* crea_poligono(PoligonoConvesso*);
+Shape* crea_poligono(vector<Vertice>&);
 #endif // POLIGONOCONVESSO_H

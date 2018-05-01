@@ -8,7 +8,7 @@ PoligonoConvesso::PoligonoConvesso(const vector<Vertice>& V, unsigned int x, std
   if(V.size() == x){
       Lista = V;
     }else{
-
+      reduce_n_shape();
       throw  std::invalid_argument("Impossibile creare un "+ name +" utilizzando questi vertici");
     }
 }
@@ -19,7 +19,7 @@ Shape* PoligonoConvesso::aggiungi_vertice(const Vertice& v){
   newVector.push_back(v);
   return crea_poligono(newVector);
 }
-
+vector<Vertice> PoligonoConvesso::get_vertici()const{return Lista;}
 
 // Le prossime funzioni vengono utilizzate per filtrare il vector<Vertice> che viene utilizzato per costruire
 // un poligono. Vengono rimossi tutti i vertici che non possono far parte del poligono, ad esempio i punti interni.
@@ -116,6 +116,30 @@ Shape* crea_poligono(vector<Vertice>& V){
   // ricevo un vettore di vertici, elimino eventuali vertici inutili, e se 3 <= N <=X costruisco un poligono
 
   try{
+   V=grahamScan(V);
+   switch (V.size()) {
+     case 3:
+       return new Triangolo(V);
+       break;
+     case 4:
+       return new Quadrilatero(V);
+       break;
+     default:
+       throw  std::invalid_argument("Impossibile creare un poligono di questa dimensione");
+       break;
+     }
+  }
+  catch(std::invalid_argument& e){
+    std::cerr << e.what() << std::endl;
+  }
+  return 0;
+}
+
+Shape* crea_poligono(PoligonoConvesso* P){
+  // ricevo un vettore di vertici, elimino eventuali vertici inutili, e se 3 <= N <=X costruisco un poligono
+
+  try{
+   vector<Vertice> V = P->get_vertici();
    V=grahamScan(V);
    switch (V.size()) {
      case 3:
