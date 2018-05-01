@@ -1,6 +1,6 @@
 #ifndef QUADRILATERO_H
 #define QUADRILATERO_H
-
+#define _USE_MATH_DEFINES
 #include "poligonoconvesso.h"
 class Quadrilatero: public PoligonoConvesso
 {
@@ -14,9 +14,9 @@ public:
   virtual unsigned int size() const;
   virtual double get_perimetro() const;
   virtual double get_area() const;
+  Quadrilatero(const vector<Vertice>&);
 protected:
   virtual string toString() const;
-  Quadrilatero(const vector<Vertice>&);
   double lati[4];
 private:
   void set_lati(const vector<Vertice>&);

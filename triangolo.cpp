@@ -1,7 +1,13 @@
 #include "triangolo.h"
 
 Triangolo::Triangolo(const Triangolo & T):PoligonoConvesso(T){set_lati(T.Lista);}
-Triangolo::Triangolo(const vector<Vertice>&V):PoligonoConvesso(V){set_lati(V);}
+
+
+Triangolo::Triangolo(const vector<Vertice>&V):PoligonoConvesso(V,3,"Triangolo"){
+      set_lati(V);
+}
+
+
 
 //double Triangolo::get_altezza(const Vertice& V)const{}
 unsigned int Triangolo::size()const{return 3;}

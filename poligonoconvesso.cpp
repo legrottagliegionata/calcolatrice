@@ -1,8 +1,17 @@
 #include "poligonoconvesso.h"
 #include "triangolo.h"
 #include "quadrilatero.h"
+PoligonoConvesso::PoligonoConvesso(){}
 PoligonoConvesso::PoligonoConvesso(const PoligonoConvesso& p):Shape(),Lista(p.Lista){}
-PoligonoConvesso::PoligonoConvesso(const vector<Vertice>& V):Shape(),Lista(V){}
+PoligonoConvesso::PoligonoConvesso(const vector<Vertice>& V, unsigned int x, std::string name):Shape(),Lista(V){
+  const_cast<vector<Vertice>&>(V) = grahamScan(const_cast<vector<Vertice>&>(V));
+  if(V.size() == x){
+      Lista = V;
+    }else{
+
+      throw  std::invalid_argument("Impossibile creare un "+ name +" utilizzando questi vertici");
+    }
+}
 unsigned int PoligonoConvesso::size()const{return Lista.size();}
 
 Shape* PoligonoConvesso::aggiungi_vertice(const Vertice& v){

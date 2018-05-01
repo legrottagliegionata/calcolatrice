@@ -2,6 +2,7 @@
 
 #include<iostream>
 #include"poligonoconvesso.h"
+
 using namespace std;
 
 
@@ -10,10 +11,10 @@ int main(int argc, char *argv[])
 {
  // QCoreApplication a(argc, argv);
 
-    Vertice v1(0,5);
+    Vertice v1(1,5);
     Vertice v2(0,0);
     Vertice v3(2,0);
-    Vertice v4(2,5);
+    Vertice v4(3,5);
 
 
     vector<Vertice> P;
@@ -24,7 +25,7 @@ int main(int argc, char *argv[])
     try{
     Shape* T= crea_poligono(P);
     Shape* Q= static_cast<PoligonoConvesso*>(T)->aggiungi_vertice(v4) ;
-    cout<<"area quad: "<<static_cast<PoligonoConvesso*>(Q)->get_area()<<endl ;
+    //cout<<"area quad: "<<static_cast<PoligonoConvesso*>(Q)->get_area()<<endl ;
     //cout<<*T<<endl;
     delete T;
     //cout<<*Q<<endl;
