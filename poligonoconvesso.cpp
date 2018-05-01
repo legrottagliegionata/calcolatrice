@@ -1,6 +1,7 @@
 #include "poligonoconvesso.h"
 #include "triangolo.h"
 #include "quadrilatero.h"
+#include "pentagono.h"
 PoligonoConvesso::PoligonoConvesso(){}
 PoligonoConvesso::PoligonoConvesso(const PoligonoConvesso& p):Shape(),Lista(p.Lista){}
 PoligonoConvesso::PoligonoConvesso(const vector<Vertice>& V, unsigned int x, std::string name):Shape(),Lista(V){
@@ -14,11 +15,33 @@ PoligonoConvesso::PoligonoConvesso(const vector<Vertice>& V, unsigned int x, std
 }
 unsigned int PoligonoConvesso::size()const{return Lista.size();}
 
-Shape* PoligonoConvesso::aggiungi_vertice(const Vertice& v){
+PoligonoConvesso* PoligonoConvesso::aggiungi_vertice(const Vertice& v){
   vector<Vertice> newVector(Lista);
   newVector.push_back(v);
   return crea_poligono(newVector);
 }
+
+PoligonoConvesso* PoligonoConvesso::rimuovi_vertice(const Vertice& v){
+  bool found = false;
+
+  vector<Vertice> V(Lista);
+  auto it = V.begin();
+  for(; it != V.end() && !found; ){
+      if(*it == v){
+          found=true;}
+      else ++it;
+    }
+  if(found){
+      V.erase(it);
+      return crea_poligono(V);
+
+    }
+  else{
+      std::invalid_argument("Vertice non trovato");
+    }
+  return nullptr;
+}
+
 vector<Vertice> PoligonoConvesso::get_vertici()const{return Lista;}
 
 // Le prossime funzioni vengono utilizzate per filtrare il vector<Vertice> che viene utilizzato per costruire
@@ -112,7 +135,7 @@ vector<Vertice> grahamScan(vector<Vertice>& Points)    {
     return hull;
 }
 
-Shape* crea_poligono(vector<Vertice>& V){
+PoligonoConvesso* crea_poligono(vector<Vertice>& V){
   // ricevo un vettore di vertici, elimino eventuali vertici inutili, e se 3 <= N <=X costruisco un poligono
 
   try{
@@ -123,6 +146,9 @@ Shape* crea_poligono(vector<Vertice>& V){
        break;
      case 4:
        return new Quadrilatero(V);
+       break;
+     case 5:
+       return new Pentagono(V);
        break;
      default:
        throw  std::invalid_argument("Impossibile creare un poligono di questa dimensione");
@@ -135,7 +161,7 @@ Shape* crea_poligono(vector<Vertice>& V){
   return 0;
 }
 
-Shape* crea_poligono(PoligonoConvesso* P){
+PoligonoConvesso* crea_poligono(PoligonoConvesso* P){
   // ricevo un vettore di vertici, elimino eventuali vertici inutili, e se 3 <= N <=X costruisco un poligono
 
   try{
@@ -147,6 +173,9 @@ Shape* crea_poligono(PoligonoConvesso* P){
        break;
      case 4:
        return new Quadrilatero(V);
+       break;
+     case 5:
+       return new Pentagono(V);
        break;
      default:
        throw  std::invalid_argument("Impossibile creare un poligono di questa dimensione");

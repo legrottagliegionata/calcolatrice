@@ -17,10 +17,11 @@ public:
   virtual unsigned int size() const;
   virtual double get_perimetro() const =0;
   virtual double get_area() const =0;
-  Shape* aggiungi_vertice(const Vertice&);
+  PoligonoConvesso* aggiungi_vertice(const Vertice&);
+  PoligonoConvesso* rimuovi_vertice(const Vertice&);
 
 protected:
-  virtual void set_lati(const vector<Vertice>&)  =0;
+  virtual void set_lati(const vector<Vertice>&) =0;
   std::vector<Vertice> Lista;
 
 };
@@ -29,6 +30,6 @@ vector<Vertice> grahamScan(vector<Vertice>&);
 bool POLAR_ORDER(Vertice, Vertice);
 int sqrDist(Vertice, Vertice);
 int ccw(Vertice, Vertice, Vertice);
-Shape* crea_poligono(PoligonoConvesso*);
-Shape* crea_poligono(vector<Vertice>&);
+PoligonoConvesso* crea_poligono(PoligonoConvesso*);
+PoligonoConvesso* crea_poligono(vector<Vertice>&);
 #endif // POLIGONOCONVESSO_H

@@ -6,7 +6,6 @@ Quadrilatero::Quadrilatero(const vector<Vertice>&V):PoligonoConvesso(V,4,"Quadri
 }
 
 //double Quadrilatero::get_altezza(const Vertice& V)const{}
-unsigned int Quadrilatero::size()const{return 3;}
 double Quadrilatero::get_perimetro()const{
   return lati[0]+lati[1]+lati[2]+lati[3];
 }
@@ -25,11 +24,11 @@ std::ostream& operator<< (std::ostream& os,const Quadrilatero& T){
  return os;
 }
 string Quadrilatero::toString() const{
-  string s ="{ Quadrilatero: ";
+  string s ="Quadrilatero: ";
   for(auto it=Lista.begin();it!=Lista.end();it++){
     s+= it->toString();
     }
-  s+= " Lati ab:"+to_string_nozero(lati[0])+ ", bc:"+to_string_nozero(lati[1])+ ", cd:"+to_string_nozero(lati[2])+ ", da:"+to_string_nozero(lati[3])+ "}";
+  s+= " Lati ab:"+to_string_nozero(lati[0])+ ", bc:"+to_string_nozero(lati[1])+ ", cd:"+to_string_nozero(lati[2])+ ", da:"+to_string_nozero(lati[3]);
   return s;
 }
 
