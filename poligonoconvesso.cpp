@@ -2,6 +2,7 @@
 #include "triangolo.h"
 #include "quadrilatero.h"
 #include "pentagono.h"
+#include "esagono.h"
 PoligonoConvesso::PoligonoConvesso(){}
 PoligonoConvesso::PoligonoConvesso(const PoligonoConvesso& p):Shape(),Lista(p.Lista){}
 PoligonoConvesso::PoligonoConvesso(const vector<Vertice>& V, unsigned int x, std::string name):Shape(),Lista(V){
@@ -135,11 +136,11 @@ vector<Vertice> grahamScan(vector<Vertice>& Points)    {
     return hull;
 }
 
-PoligonoConvesso* crea_poligono(vector<Vertice>& V){
+PoligonoConvesso* crea_poligono(const vector<Vertice>& V){
   // ricevo un vettore di vertici, elimino eventuali vertici inutili, e se 3 <= N <=X costruisco un poligono
 
   try{
-   V=grahamScan(V);
+   const_cast<vector<Vertice>&>(V) =grahamScan(const_cast<vector<Vertice>&>(V));
    switch (V.size()) {
      case 3:
        return new Triangolo(V);
@@ -149,6 +150,9 @@ PoligonoConvesso* crea_poligono(vector<Vertice>& V){
        break;
      case 5:
        return new Pentagono(V);
+       break;
+     case 6:
+       return new Esagono(V);
        break;
      default:
        throw  std::invalid_argument("Impossibile creare un poligono di questa dimensione");
@@ -176,6 +180,9 @@ PoligonoConvesso* crea_poligono(PoligonoConvesso* P){
        break;
      case 5:
        return new Pentagono(V);
+       break;
+     case 6:
+       return new Esagono(V);
        break;
      default:
        throw  std::invalid_argument("Impossibile creare un poligono di questa dimensione");

@@ -24,7 +24,7 @@ double distanza(const Punto& p1, const Punto& p2)
     return sqrt( dX + dY );
 }
 
-std::ostream& operator<<(std::ostream& os,Punto& p){
+std::ostream& operator<<(std::ostream& os,const Punto& p){
         return os<<"("<<p.get_X()<<","<<p.get_Y()<<")";
 }
 

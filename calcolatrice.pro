@@ -22,7 +22,8 @@ SOURCES += main.cpp \
     triangolo.cpp \
     shape.cpp \
     quadrilatero.cpp \
-    pentagono.cpp
+    pentagono.cpp \
+    esagono.cpp
 
 HEADERS += \
     punto.h \
@@ -31,4 +32,5 @@ HEADERS += \
     triangolo.h \
     shape.h \
     quadrilatero.h \
-    pentagono.h
+    pentagono.h \
+    esagono.h

@@ -31,5 +31,5 @@ bool POLAR_ORDER(Vertice, Vertice);
 int sqrDist(Vertice, Vertice);
 int ccw(Vertice, Vertice, Vertice);
 PoligonoConvesso* crea_poligono(PoligonoConvesso*);
-PoligonoConvesso* crea_poligono(vector<Vertice>&);
+PoligonoConvesso* crea_poligono(const vector<Vertice>&);
 #endif // POLIGONOCONVESSO_H
