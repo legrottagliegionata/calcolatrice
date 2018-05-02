@@ -14,7 +14,7 @@ double get_Angolo(const Vertice &b, const Punto &a, const Punto &c){
 }
 
 std::string Vertice::toString()const{
-  return std::string("(" + to_string_nozero(get_X()) + "," + to_string_nozero(get_Y())+ ")");
+  return std::string("(V," + to_string_nozero(get_X()) + "," + to_string_nozero(get_Y())+ ")");
 }
 
 

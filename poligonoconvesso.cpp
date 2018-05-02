@@ -2,11 +2,14 @@
 #include "triangolo.h"
 #include "quadrilatero.h"
 #include "pentagono.h"
+<<<<<<< HEAD
 #include "esagono.h"
 #include"ettagono.h"
 #include"ottagono.h"
 #include"ennagono.h"
 #include"decagono.h"
+=======
+>>>>>>> parent of 7c06b29... esagono
 PoligonoConvesso::PoligonoConvesso(){}
 PoligonoConvesso::PoligonoConvesso(const PoligonoConvesso& p):Shape(),Lista(p.Lista){}
 PoligonoConvesso::PoligonoConvesso(const vector<Vertice>& V, unsigned int x, std::string name):Shape(),Lista(V){
@@ -149,12 +152,16 @@ vector<Vertice> grahamScan(vector<Vertice>& Points)    {
     return hull;
 }
 
-PoligonoConvesso* crea_poligono(const vector<Vertice>& V){
+PoligonoConvesso* crea_poligono(vector<Vertice>& V){
   // ricevo un vettore di vertici, elimino eventuali vertici inutili, e se 3 <= N <=X costruisco un poligono
 
   try{
+<<<<<<< HEAD
    const_cast<vector<Vertice>&>(V) =grahamScan(const_cast<vector<Vertice>&>(V));
     if(V.size()>10) throw  std::invalid_argument("Nel modello non è incluso un poligono di queste dimensioni");
+=======
+   V=grahamScan(V);
+>>>>>>> parent of 7c06b29... esagono
    switch (V.size()) {
      case 3:
        return new Triangolo(V);
@@ -165,6 +172,7 @@ PoligonoConvesso* crea_poligono(const vector<Vertice>& V){
      case 5:
        return new Pentagono(V);
        break;
+<<<<<<< HEAD
      case 6:
        return new Esagono(V);
        break;
@@ -181,6 +189,8 @@ PoligonoConvesso* crea_poligono(const vector<Vertice>& V){
        return new Decagono(V);
        break;
 
+=======
+>>>>>>> parent of 7c06b29... esagono
      default:
        throw  std::invalid_argument("Impossibile creare un poligono di questa dimensione");
        break;
@@ -208,6 +218,7 @@ PoligonoConvesso* crea_poligono(PoligonoConvesso* P){
      case 5:
        return new Pentagono(V);
        break;
+<<<<<<< HEAD
      case 6:
        return new Esagono(V);
        break;
@@ -223,6 +234,8 @@ PoligonoConvesso* crea_poligono(PoligonoConvesso* P){
      case 10:
        return new Decagono(V);
        break;
+=======
+>>>>>>> parent of 7c06b29... esagono
      default:
        throw  std::invalid_argument("Impossibile creare un poligono di questa dimensione");
        break;

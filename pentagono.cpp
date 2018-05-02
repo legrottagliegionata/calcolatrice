@@ -1,5 +1,4 @@
 #include "pentagono.h"
-#include "triangolo.h"
 
 Pentagono::Pentagono(const Pentagono & T):PoligonoConvesso(T){set_lati(T.Lista);}
 
@@ -13,13 +12,8 @@ double Pentagono::get_perimetro()const{
 }
 
 double Pentagono::get_area()const{
-  unsigned int a=0,b=1, c=2;
-  double area=0;
-  while(c < Lista.size()){
-      area+= Triangolo({Lista[a], Lista[b], Lista[c]}).get_area();
-      c++;b++;
-    }
-  return area;
+  //semiperimetro
+  return 0;
 }
 
 std::ostream& operator<< (std::ostream& os,const Pentagono& T){
@@ -41,6 +35,10 @@ string Pentagono::toString() const{
   for(auto it=Lista.begin();it!=Lista.end();it++){
     s+= it->toString();
     }
+<<<<<<< HEAD
+=======
+  s+= " Lati ab:"+to_string_nozero(lati[0])+ ", bc:"+to_string_nozero(lati[1])+ ", ca:"+to_string_nozero(lati[2]);
+>>>>>>> parent of 7c06b29... esagono
   return s;
 }
 
