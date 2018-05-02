@@ -35,10 +35,7 @@ string Pentagono::toString() const{
   for(auto it=Lista.begin();it!=Lista.end();it++){
     s+= it->toString();
     }
-<<<<<<< HEAD
-=======
-  s+= " Lati ab:"+to_string_nozero(lati[0])+ ", bc:"+to_string_nozero(lati[1])+ ", ca:"+to_string_nozero(lati[2]);
->>>>>>> parent of 7c06b29... esagono
+
   return s;
 }
 

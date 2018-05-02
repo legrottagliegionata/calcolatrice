@@ -2,14 +2,11 @@
 #include "triangolo.h"
 #include "quadrilatero.h"
 #include "pentagono.h"
-<<<<<<< HEAD
 #include "esagono.h"
-#include"ettagono.h"
-#include"ottagono.h"
-#include"ennagono.h"
-#include"decagono.h"
-=======
->>>>>>> parent of 7c06b29... esagono
+#include "ettagono.h"
+#include "ottagono.h"
+#include "ennagono.h"
+#include "decagono.h"
 PoligonoConvesso::PoligonoConvesso(){}
 PoligonoConvesso::PoligonoConvesso(const PoligonoConvesso& p):Shape(),Lista(p.Lista){}
 PoligonoConvesso::PoligonoConvesso(const vector<Vertice>& V, unsigned int x, std::string name):Shape(),Lista(V){
@@ -57,8 +54,8 @@ vector<Vertice> PoligonoConvesso::get_vertici()const{return Lista;}
 
 Vertice pivot;
 
-int ccw(Vertice a, Vertice b, Vertice c) {
-    int area = (b.get_X() - a.get_X()) * (c.get_Y() - a.get_Y()) - (b.get_Y() - a.get_Y()) * (c.get_X() - a.get_X());
+double ccw(Vertice a, Vertice b, Vertice c) {
+    double area = (b.get_X() - a.get_X()) * (c.get_Y() - a.get_Y()) - (b.get_Y() - a.get_Y()) * (c.get_X() - a.get_X());
     if (area > 0)
         return -1;
     else if (area < 0)
@@ -67,13 +64,13 @@ int ccw(Vertice a, Vertice b, Vertice c) {
 }
 
 // restituisce il quadrato della distanza euclidea tra due punti
-int sqrDist(Vertice a, Vertice b)  {
-    int dx = a.get_X() - b.get_X(), dy = a.get_Y() - b.get_Y();
+double sqrDist(Vertice a, Vertice b)  {
+    double dx = a.get_X() - b.get_X(), dy = a.get_Y() - b.get_Y();
     return dx * dx + dy * dy;
 }
 // ordinamento dei punti in ordine polare
 bool POLAR_ORDER(Vertice a, Vertice b)  {
-    int order = ccw(pivot, a, b);
+    double order = ccw(pivot, a, b);
     if (order == 0)
         return sqrDist(pivot, a) < sqrDist(pivot, b);
     return (order == -1);
@@ -156,12 +153,9 @@ PoligonoConvesso* crea_poligono(vector<Vertice>& V){
   // ricevo un vettore di vertici, elimino eventuali vertici inutili, e se 3 <= N <=X costruisco un poligono
 
   try{
-<<<<<<< HEAD
    const_cast<vector<Vertice>&>(V) =grahamScan(const_cast<vector<Vertice>&>(V));
     if(V.size()>10) throw  std::invalid_argument("Nel modello non è incluso un poligono di queste dimensioni");
-=======
    V=grahamScan(V);
->>>>>>> parent of 7c06b29... esagono
    switch (V.size()) {
      case 3:
        return new Triangolo(V);
@@ -172,7 +166,6 @@ PoligonoConvesso* crea_poligono(vector<Vertice>& V){
      case 5:
        return new Pentagono(V);
        break;
-<<<<<<< HEAD
      case 6:
        return new Esagono(V);
        break;
@@ -189,8 +182,6 @@ PoligonoConvesso* crea_poligono(vector<Vertice>& V){
        return new Decagono(V);
        break;
 
-=======
->>>>>>> parent of 7c06b29... esagono
      default:
        throw  std::invalid_argument("Impossibile creare un poligono di questa dimensione");
        break;
@@ -218,7 +209,6 @@ PoligonoConvesso* crea_poligono(PoligonoConvesso* P){
      case 5:
        return new Pentagono(V);
        break;
-<<<<<<< HEAD
      case 6:
        return new Esagono(V);
        break;
@@ -234,8 +224,7 @@ PoligonoConvesso* crea_poligono(PoligonoConvesso* P){
      case 10:
        return new Decagono(V);
        break;
-=======
->>>>>>> parent of 7c06b29... esagono
+
      default:
        throw  std::invalid_argument("Impossibile creare un poligono di questa dimensione");
        break;

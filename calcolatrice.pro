@@ -22,16 +22,12 @@ SOURCES += main.cpp \
     triangolo.cpp \
     shape.cpp \
     quadrilatero.cpp \
-<<<<<<< HEAD
     pentagono.cpp \
     esagono.cpp \
     ettagono.cpp \
     ottagono.cpp \
     ennagono.cpp \
     decagono.cpp
-=======
-    pentagono.cpp
->>>>>>> parent of 7c06b29... esagono
 
 HEADERS += \
     punto.h \
@@ -40,13 +36,9 @@ HEADERS += \
     triangolo.h \
     shape.h \
     quadrilatero.h \
-<<<<<<< HEAD
     pentagono.h \
     esagono.h \
     ettagono.h \
     ottagono.h \
     ennagono.h \
-    decagono.h
-=======
-    pentagono.h
->>>>>>> parent of 7c06b29... esagono
+    decagono.h \
