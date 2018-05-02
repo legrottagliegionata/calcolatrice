@@ -3,9 +3,9 @@
 
 
 #include <ostream>
-#include<string>
-using std::string;
 #include <cmath>
+#include<QString>
+#include<ostream>
 class Punto
 {
 	private:
@@ -18,7 +18,7 @@ class Punto
 		double get_X()const;
 		double get_Y()const;
 
-		virtual std::string toString() const;
+        virtual QString toString() const;
 
 //		overraiding operatori
 		virtual bool operator==(const Punto&)const;
@@ -26,7 +26,7 @@ class Punto
         virtual bool operator<(const Punto&)const;
 
 };
-std::string to_string_nozero(double a);
+QString to_string_nozero(double a);
 double distanza(const Punto&, const Punto&);
 std::ostream& operator<<(std::ostream&,const Punto&);
 

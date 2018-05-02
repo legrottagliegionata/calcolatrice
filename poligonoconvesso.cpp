@@ -19,39 +19,41 @@
 #include "PoligoniConvessi/icosagono.h"
 PoligonoConvesso::PoligonoConvesso(){}
 PoligonoConvesso::PoligonoConvesso(const PoligonoConvesso& p):Poligono(),Lista(p.Lista){}
-PoligonoConvesso::PoligonoConvesso(const vector<Vertice>& V, unsigned int x, std::string name):Poligono(),Lista(V){
-  const_cast<vector<Vertice>&>(V) = grahamScan(const_cast<vector<Vertice>&>(V));
+PoligonoConvesso::PoligonoConvesso(const QVector<Vertice>& V, int x, QString name):Poligono(),Lista(V){
+  const_cast<QVector<Vertice>&>(V) = grahamScan(const_cast<QVector<Vertice>&>(V));
   if(V.size() == x){
       Lista = V;
     }else{
       reduce_n_shape();
-      throw  std::invalid_argument("Impossibile creare un "+ name +" utilizzando questi vertici");
+      std::string s(name.toUtf8().constData());
+      throw  std::invalid_argument("Impossibile creare un "+ s +" utilizzando questi vertici");
     }
 }
 
-PoligonoConvesso::PoligonoConvesso(const vector<Vertice>& V, unsigned int x, std::string name,bool check):Poligono(),Lista(V){
+PoligonoConvesso::PoligonoConvesso(const QVector<Vertice>& V, int x, QString name,bool check):Poligono(),Lista(V){
 
   if(check){
       if(V.size() == x){
           Lista = V;
         }else{
           reduce_n_shape();
-          throw  std::invalid_argument("Impossibile creare un "+ name +" utilizzando questi vertici");
+          std::string s(name.toUtf8().constData());
+          throw  std::invalid_argument("Impossibile creare un "+ s +" utilizzando questi vertici");
         }
     }
 
 }
-unsigned int PoligonoConvesso::size()const{return Lista.size();}
+int PoligonoConvesso::size()const{return Lista.size();}
 
 PoligonoConvesso* PoligonoConvesso::aggiungi_vertice(Vertice v) const{
-  vector<Vertice> newVector(Lista);
+  QVector<Vertice> newVector(Lista);
   newVector.push_back(v);
   return PoligonoConvesso::crea_poligono(newVector);
 }
 
 PoligonoConvesso* PoligonoConvesso::rimuovi_vertice(Vertice v)const{
   bool found = false;
-  vector<Vertice> V(Lista);
+  QVector<Vertice> V(Lista);
   auto it = V.begin();
   for(; it != V.end() && !found; ){
       if(*it == v){
@@ -64,16 +66,16 @@ PoligonoConvesso* PoligonoConvesso::rimuovi_vertice(Vertice v)const{
 
     }
   else{
-      std::invalid_argument("Vertice non trovato");
+     // std::invalid_argument("Vertice non trovato");
     }
   return nullptr;
 }
 
-vector<Vertice> PoligonoConvesso::get_vertici()const{return Lista;}
+QVector<Vertice> PoligonoConvesso::get_vertici()const{return Lista;}
 
 PoligonoConvesso* operator+(const PoligonoConvesso& p1,const PoligonoConvesso& p2){
-    vector<Vertice> V(p1.get_vertici());
-    vector<Vertice> V2(p2.get_vertici());
+    QVector<Vertice> V(p1.get_vertici());
+    QVector<Vertice> V2(p2.get_vertici());
     for(auto it=V2.begin();it!=V2.end();it++){
         V.push_back(*it);
     }
@@ -81,8 +83,8 @@ PoligonoConvesso* operator+(const PoligonoConvesso& p1,const PoligonoConvesso& p
 }
 
 PoligonoConvesso* operator-(const PoligonoConvesso& p1,const PoligonoConvesso& p2){
-  vector<Vertice> v1(p1.get_vertici());
-  vector<Vertice> v2(p2.get_vertici());
+  QVector<Vertice> v1(p1.get_vertici());
+  QVector<Vertice> v2(p2.get_vertici());
   for(auto it2=v2.begin();it2!=v2.end();it2++){
       bool found=false;
       for(auto it1=v1.begin();it1!=v1.end() && !found && v1.size() >= 3;it1++){
@@ -116,7 +118,7 @@ bool PoligonoConvesso::operator !=(const PoligonoConvesso& p){
   return false;
 }
 
-// Le prossime funzioni vengono utilizzate per filtrare il vector<Vertice> che viene utilizzato per costruire
+// Le prossime funzioni vengono utilizzate per filtrare il QVector<Vertice> che viene utilizzato per costruire
 // un poligono. Vengono rimossi tutti i vertici che non possono far parte del poligono, ad esempio i punti interni.
 
 Vertice pivot;
@@ -143,11 +145,11 @@ bool PoligonoConvesso::POLAR_ORDER(Vertice a, Vertice b)  {
     return (order == -1);
 }
 // controllo che la somma di tutti gli angoli non superi il massimo consentito.
-bool PoligonoConvesso::checkVector(vector<Vertice>&Points){
+bool PoligonoConvesso::checkVector(QVector<Vertice>&Points){
   double somma=0;
-  unsigned int b=0;
+  int b=0;
   for(auto itb=Points.begin(); itb != Points.end();itb++){
-      unsigned int a,c;
+      int a,c;
       if(b==0) {a=Points.size()-1; c=b+1;}
       else if(b==Points.size()-1){c=0; a=b-1;}
       else {a=b-1; c=b+1;}
@@ -166,17 +168,17 @@ bool PoligonoConvesso::checkVector(vector<Vertice>&Points){
     return true;
 }
 //Rimuove eventuali vertici doppioni
-void PoligonoConvesso::rimuovi_doppioni(vector<Vertice>& V ){
+void PoligonoConvesso::rimuovi_doppioni(QVector<Vertice>& V ){
   for(auto i=V.begin();i!= V.end();i++){
       for(auto j=i+1; j!=V.end();j++){
           if(*i==*j) {V.erase(j); j--;}
         }
     }
 }
-vector<Vertice> PoligonoConvesso::grahamScan(vector<Vertice>& Points)    {
+QVector<Vertice> PoligonoConvesso::grahamScan(QVector<Vertice>& Points)    {
 
     rimuovi_doppioni(Points);
-    vector<Vertice> hull;
+    QVector<Vertice> hull;
     int N= Points.size();
 
     // find the Vertice having the least y coordinate (pivot),
@@ -194,7 +196,9 @@ vector<Vertice> PoligonoConvesso::grahamScan(vector<Vertice>& Points)    {
         throw  std::invalid_argument("Vertici non validi per la creazione di un Poligono.");
     //ordinamento polare del vettore Points
     pivot = Points[0];
-    sort(Points.begin()++, Points.end(), POLAR_ORDER);
+    auto it = Points.begin();
+    it++;
+    std::sort(it, Points.end(), POLAR_ORDER);
     hull.push_back(Points[0]);
     hull.push_back(Points[1]);
     hull.push_back(Points[2]);
@@ -216,11 +220,11 @@ vector<Vertice> PoligonoConvesso::grahamScan(vector<Vertice>& Points)    {
     return hull;
 }
 
-PoligonoConvesso* PoligonoConvesso::crea_poligono(vector<Vertice>& V){
+PoligonoConvesso* PoligonoConvesso::crea_poligono(QVector<Vertice>& V){
   // ricevo un vettore di vertici, elimino eventuali vertici inutili, e se 3 <= N <=X costruisco un poligono
 
   try{
-   const_cast<vector<Vertice>&>(V) =grahamScan(const_cast<vector<Vertice>&>(V));
+   const_cast<QVector<Vertice>&>(V) =grahamScan(const_cast<QVector<Vertice>&>(V));
     if(V.size()>20) throw  std::invalid_argument("Nel modello non è incluso un poligono di queste dimensioni");
    V=grahamScan(V);
    switch (V.size()) {
@@ -294,7 +298,7 @@ PoligonoConvesso* PoligonoConvesso::crea_poligono(PoligonoConvesso* P){
   // ricevo un vettore di vertici, elimino eventuali vertici inutili, e se 3 <= N <=X costruisco un poligono
 
   try{
-   vector<Vertice> V = P->get_vertici();
+   QVector<Vertice> V = P->get_vertici();
    V=grahamScan(V);
    if(V.size()>20) throw  std::invalid_argument("Nel modello non è incluso un poligono di queste dimensioni");
    switch (V.size()) {

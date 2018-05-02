@@ -1,10 +1,10 @@
 #include "quadrilatero.h"
 Quadrilatero::Quadrilatero(const Quadrilatero & T):PoligonoConvesso(T){set_lati(T.Lista);}
 
-Quadrilatero::Quadrilatero(const vector<Vertice>&V):PoligonoConvesso(V,4,"Quadrilatero"){
+Quadrilatero::Quadrilatero(const QVector<Vertice>&V):PoligonoConvesso(V,4,"Quadrilatero"){
   set_lati(V);
 }
-Quadrilatero::Quadrilatero(const vector<Vertice>&V,bool b):PoligonoConvesso(V,4,"Quadrilatero",b){
+Quadrilatero::Quadrilatero(const QVector<Vertice>&V,bool b):PoligonoConvesso(V,4,"Quadrilatero",b){
   set_lati(V);
 }
 //double Quadrilatero::get_altezza(const Vertice& V)const{}
@@ -21,26 +21,26 @@ double Quadrilatero::get_area()const{
 
 }
 
-std::ostream& operator<< (std::ostream& os,const Quadrilatero& T){
- os<<T.toString();
+ostream& operator<< (ostream& os,const Quadrilatero& T){
+ os<<T.toString().toUtf8().constData();
  return os;
 }
-string Quadrilatero::toString() const{
-  string s ="Quadrilatero: ";
+QString Quadrilatero::toString() const{
+  QString s ="Quadrilatero: ";
   for(auto it=Lista.begin();it!=Lista.end();it++){
     s+= it->toString();
     }
   return s;
 }
 
-void Quadrilatero::set_lati(const vector<Vertice>& v){
-  unsigned int x=0,y=1;
+void Quadrilatero::set_lati(const QVector<Vertice>& v){
+  int x=0,y=1;
   while(x<v.size()){
       if(y==v.size())y=0;
       lati[x] = std::sqrt((std::pow((v[y].get_X()-v[x].get_X()),2)+std::pow(v[y].get_Y()-v[x].get_Y(),2)));
       x++; y++;
     }
 }
-string Quadrilatero::get_nomeClasse()const{
+QString Quadrilatero::get_nomeClasse()const{
     return "Quadrilatero";
 }

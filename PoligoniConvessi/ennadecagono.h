@@ -4,23 +4,23 @@
 #include "poligonoconvesso.h"
 class Ennadecagono: public PoligonoConvesso
 {
-  friend std::ostream& operator<< (std::ostream&,const Ennadecagono&);
+  friend ostream& operator<< (ostream&,const Ennadecagono&);
   friend  PoligonoConvesso* PoligonoConvesso::crea_poligono(PoligonoConvesso*);
-  friend  PoligonoConvesso* PoligonoConvesso::crea_poligono(vector<Vertice>&);
+  friend  PoligonoConvesso* PoligonoConvesso::crea_poligono(QVector<Vertice>&);
 
 public:
   Ennadecagono(const Ennadecagono&);
-  Ennadecagono(const vector<Vertice>&);
+  Ennadecagono(const QVector<Vertice>&);
   virtual double get_perimetro() const;
   virtual double get_area() const;
-  virtual string toString() const;
-  string get_nomeClasse() const;
+  virtual QString toString() const;
+  QString get_nomeClasse() const;
 
 protected:
   double lati[19];
 private:
-  void set_lati(const vector<Vertice>&);
-  Ennadecagono(const vector<Vertice>&,bool);
+  void set_lati(const QVector<Vertice>&);
+  Ennadecagono(const QVector<Vertice>&,bool);
 
 };
 

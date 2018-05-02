@@ -15,8 +15,8 @@ bool Punto::operator<(const Punto& p)const{
   return x < p.x;
 }
 
-std::string Punto::toString()const{
-  return std::string("(" + to_string_nozero(x) + "," + to_string_nozero(y)+ ")");
+QString Punto::toString()const{
+  return QString("(" + to_string_nozero(x) + "," + to_string_nozero(y)+ ")");
 }
 double distanza(const Punto& p1, const Punto& p2)
 {
@@ -26,10 +26,10 @@ double distanza(const Punto& p1, const Punto& p2)
 }
 
 std::ostream& operator<<(std::ostream& os,const Punto& p){
-        return os<<p.toString();
+        return os<<p.toString().toUtf8().constData();
 }
 
-std::string to_string_nozero(double a){
+QString to_string_nozero(double a){
   std::string s= std::to_string(a);
   int i=s.size()-1;
   bool out=false;
@@ -42,5 +42,6 @@ std::string to_string_nozero(double a){
         out=true;
     }
   if(s[i]=='.') s.erase(s.size()-1,1);
-  return s;
+  QString str = QString::fromStdString(s);
+  return str;
 }

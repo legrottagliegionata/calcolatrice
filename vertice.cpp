@@ -13,8 +13,8 @@ double Vertice::get_Angolo(const Vertice &b, const Punto &a, const Punto &c){
     return abs((alpha * 180 / M_PI));
 }
 
-std::string Vertice::toString()const{
-  return std::string("(V," + to_string_nozero(get_X()) + "," + to_string_nozero(get_Y())+ ")");
+QString Vertice::toString()const{
+  return QString("(V," + to_string_nozero(get_X()) + "," + to_string_nozero(get_Y())+ ")");
 }
 
 

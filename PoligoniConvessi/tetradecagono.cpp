@@ -5,10 +5,10 @@
 Tetradecagono::Tetradecagono(const Tetradecagono & T):PoligonoConvesso(T){set_lati(T.Lista);}
 
 
-Tetradecagono::Tetradecagono(const vector<Vertice>&V):PoligonoConvesso(V,14,"Tetradecagono"){
+Tetradecagono::Tetradecagono(const QVector<Vertice>&V):PoligonoConvesso(V,14,"Tetradecagono"){
       set_lati(V);
 }
-Tetradecagono::Tetradecagono(const vector<Vertice>&V,bool b):PoligonoConvesso(V,14,"Tetradecagono",b){
+Tetradecagono::Tetradecagono(const QVector<Vertice>&V,bool b):PoligonoConvesso(V,14,"Tetradecagono",b){
       set_lati(V);
 }
 double Tetradecagono::get_perimetro()const{
@@ -16,7 +16,7 @@ double Tetradecagono::get_perimetro()const{
 }
 
 double Tetradecagono::get_area()const{
-  unsigned int a=0,b=1, c=2;
+  int a=0,b=1, c=2;
   double area=0;
   while(c < Lista.size()){
       area+= Triangolo({Lista[a], Lista[b], Lista[c]}).get_area();
@@ -25,13 +25,13 @@ double Tetradecagono::get_area()const{
   return area;
 }
 
-std::ostream& operator<< (std::ostream& os,const Tetradecagono& T){
- os<<T.toString();
+ostream& operator<< (ostream& os,const Tetradecagono& T){
+ os<<T.toString().toUtf8().constData();
  return os;
 }
 
-void Tetradecagono::set_lati(const vector<Vertice>& v){
-  unsigned int x=0,y=1;
+void Tetradecagono::set_lati(const QVector<Vertice>& v){
+  int x=0,y=1;
   while(x<v.size()){
       if(y==v.size())y=0;
       lati[x] = std::sqrt((std::pow((v[y].get_X()-v[x].get_X()),2)+std::pow(v[y].get_Y()-v[x].get_Y(),2)));
@@ -39,13 +39,13 @@ void Tetradecagono::set_lati(const vector<Vertice>& v){
     }
 }
 
-string Tetradecagono::toString() const{
-  string s ="Tetradecagono: ";
+QString Tetradecagono::toString() const{
+  QString s ="Tetradecagono: ";
   for(auto it=Lista.begin();it!=Lista.end();it++){
     s+= it->toString();
     }
   return s;
 }
-string Tetradecagono::get_nomeClasse()const{
+QString Tetradecagono::get_nomeClasse()const{
     return "Tetradecagono";
 }

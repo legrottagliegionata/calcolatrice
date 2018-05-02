@@ -6,21 +6,21 @@
 #include "poligonoconvesso.h"
 class Quadrilatero: public PoligonoConvesso
 {
-  friend std::ostream& operator<< (std::ostream&,const Quadrilatero&);
+  friend ostream& operator<< (ostream&,const Quadrilatero&);
   friend  PoligonoConvesso* PoligonoConvesso::crea_poligono(PoligonoConvesso*);
-  friend  PoligonoConvesso* PoligonoConvesso::crea_poligono(vector<Vertice>&);
+  friend  PoligonoConvesso* PoligonoConvesso::crea_poligono(QVector<Vertice>&);
 public:
   Quadrilatero(const Quadrilatero&);
   virtual double get_perimetro() const;
   virtual double get_area() const;
-  Quadrilatero(const vector<Vertice>&);
-  virtual string toString() const;
-  string get_nomeClasse() const;
+  Quadrilatero(const QVector<Vertice>&);
+  virtual QString toString() const;
+  QString get_nomeClasse() const;
 protected:
   double lati[4];
 private:
-  void set_lati(const vector<Vertice>&);
-  Quadrilatero(const vector<Vertice>&,bool);
+  void set_lati(const QVector<Vertice>&);
+  Quadrilatero(const QVector<Vertice>&,bool);
 
 };
 

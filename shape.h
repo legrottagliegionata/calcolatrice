@@ -3,29 +3,27 @@
 
 #include "vertice.h"
 #include<vector>
-#include <string>
 #include<iostream>
-#include<sstream>
-
-using std::string;
-using std::stringstream;
+#include<ostream>
+#include<QVector>
+using std::ostream;
 class Shape
 {
-    friend std::ostream& operator<< (std::ostream&,const Shape&);
+    friend ostream& operator<< (ostream&,const Shape&);
 
     protected:
             static void reduce_n_shape();
-            unsigned int id=0;
+            int id=0;
 
     public:
             Shape(const Shape&);
             virtual ~Shape()=default;
             Shape();
-            unsigned int get_id() const;
-            virtual string toString() const =0;
-            virtual string get_nomeClasse() const=0;
+            int get_id() const;
+            virtual QString toString() const =0;
+            virtual QString get_nomeClasse() const=0;
     private:
-            static unsigned int n_shape;
+            static int n_shape;
 
 
 };

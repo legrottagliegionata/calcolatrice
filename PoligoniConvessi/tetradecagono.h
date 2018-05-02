@@ -4,22 +4,22 @@
 #include "poligonoconvesso.h"
 class Tetradecagono: public PoligonoConvesso
 {
-  friend std::ostream& operator<< (std::ostream&,const Tetradecagono&);
+  friend ostream& operator<< (ostream&,const Tetradecagono&);
   friend  PoligonoConvesso* PoligonoConvesso::crea_poligono(PoligonoConvesso*);
-  friend  PoligonoConvesso* PoligonoConvesso::crea_poligono(vector<Vertice>&);
+  friend  PoligonoConvesso* PoligonoConvesso::crea_poligono(QVector<Vertice>&);
 
 public:
   Tetradecagono(const Tetradecagono&);
-  Tetradecagono(const vector<Vertice>&);
+  Tetradecagono(const QVector<Vertice>&);
   virtual double get_perimetro() const;
   virtual double get_area() const;
-  virtual string toString() const;
-  string get_nomeClasse() const;
+  virtual QString toString() const;
+  QString get_nomeClasse() const;
 protected:
   double lati[14];
 private:
-  void set_lati(const vector<Vertice>&);
-  Tetradecagono(const vector<Vertice>&,bool);
+  void set_lati(const QVector<Vertice>&);
+  Tetradecagono(const QVector<Vertice>&,bool);
 
 };
 

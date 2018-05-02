@@ -5,10 +5,10 @@
 Ennagono::Ennagono(const Ennagono & T):PoligonoConvesso(T){set_lati(T.Lista);}
 
 
-Ennagono::Ennagono(const vector<Vertice>&V):PoligonoConvesso(V,9,"Ennagono"){
+Ennagono::Ennagono(const QVector<Vertice>&V):PoligonoConvesso(V,9,"Ennagono"){
       set_lati(V);
 }
-Ennagono::Ennagono(const vector<Vertice>&V,bool b):PoligonoConvesso(V,9,"Ennagono",b){
+Ennagono::Ennagono(const QVector<Vertice>&V,bool b):PoligonoConvesso(V,9,"Ennagono",b){
       set_lati(V);
 }
 double Ennagono::get_perimetro()const{
@@ -16,7 +16,7 @@ double Ennagono::get_perimetro()const{
 }
 
 double Ennagono::get_area()const{
-  unsigned int a=0,b=1, c=2;
+  int a=0,b=1, c=2;
   double area=0;
   while(c < Lista.size()){
       area+= Triangolo({Lista[a], Lista[b], Lista[c]}).get_area();
@@ -25,13 +25,13 @@ double Ennagono::get_area()const{
   return area;
 }
 
-std::ostream& operator<< (std::ostream& os,const Ennagono& T){
- os<<T.toString();
+ostream& operator<< (ostream& os,const Ennagono& T){
+ os<<T.toString().toUtf8().constData();
  return os;
 }
 
-void Ennagono::set_lati(const vector<Vertice>& v){
-  unsigned int x=0,y=1;
+void Ennagono::set_lati(const QVector<Vertice>& v){
+  int x=0,y=1;
   while(x<v.size()){
       if(y==v.size())y=0;
       lati[x] = std::sqrt((std::pow((v[y].get_X()-v[x].get_X()),2)+std::pow(v[y].get_Y()-v[x].get_Y(),2)));
@@ -39,13 +39,13 @@ void Ennagono::set_lati(const vector<Vertice>& v){
     }
 }
 
-string Ennagono::toString() const{
-  string s ="Ennagono: ";
+QString Ennagono::toString() const{
+  QString s ="Ennagono: ";
   for(auto it=Lista.begin();it!=Lista.end();it++){
     s+= it->toString();
     }
   return s;
 }
-string Ennagono::get_nomeClasse()const{
+QString Ennagono::get_nomeClasse()const{
     return "Ennagono";
 }

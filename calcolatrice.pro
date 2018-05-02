@@ -73,4 +73,5 @@ HEADERS += \
 SUBDIRS += \
     calcolatrice.pro
 
-DISTFILES +=
+DISTFILES += \
+    out.txt

@@ -4,22 +4,22 @@
 #include "poligonoconvesso.h"
 class Pentagono: public PoligonoConvesso
 {
-  friend std::ostream& operator<< (std::ostream&,const Pentagono&);
+  friend ostream& operator<< (ostream&,const Pentagono&);
   friend  PoligonoConvesso* PoligonoConvesso::crea_poligono(PoligonoConvesso*);
-  friend  PoligonoConvesso* PoligonoConvesso::crea_poligono(vector<Vertice>&);
+  friend  PoligonoConvesso* PoligonoConvesso::crea_poligono(QVector<Vertice>&);
 
 public:
   Pentagono(const Pentagono&);
   virtual double get_perimetro() const;
   virtual double get_area() const;
-  Pentagono(const vector<Vertice>&);
-  virtual string toString() const;
-  string get_nomeClasse() const;
+  Pentagono(const QVector<Vertice>&);
+  virtual QString toString() const;
+  QString get_nomeClasse() const;
 protected:
   double lati[5];
 private:
-  void set_lati(const vector<Vertice>&);
-  Pentagono(const vector<Vertice>&,bool);
+  void set_lati(const QVector<Vertice>&);
+  Pentagono(const QVector<Vertice>&,bool);
 
 
 };

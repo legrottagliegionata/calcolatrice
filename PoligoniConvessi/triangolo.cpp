@@ -3,11 +3,11 @@
 Triangolo::Triangolo(const Triangolo & T):PoligonoConvesso(T){set_lati(T.Lista);}
 
 
-Triangolo::Triangolo(const vector<Vertice>&V):PoligonoConvesso(V,3,"Triangolo"){
+Triangolo::Triangolo(const QVector<Vertice>&V):PoligonoConvesso(V,3,"Triangolo"){
       set_lati(V);
 }
 
-Triangolo::Triangolo(const vector<Vertice>&V,bool b):PoligonoConvesso(V,3,"Triangolo",b){
+Triangolo::Triangolo(const QVector<Vertice>&V,bool b):PoligonoConvesso(V,3,"Triangolo",b){
       set_lati(V);
 }
 
@@ -22,13 +22,13 @@ double Triangolo::get_area()const{
   return std::sqrt(x);
 }
 
-std::ostream& operator<< (std::ostream& os,const Triangolo& T){
- os<<T.toString();
+ostream& operator<< (ostream& os,const Triangolo& T){
+ os<<T.toString().toUtf8().constData();
  return os;
 }
 
-void Triangolo::set_lati(const vector<Vertice>& v){
-  unsigned int x=0,y=1;
+void Triangolo::set_lati(const QVector<Vertice>& v){
+  int x=0,y=1;
   while(x<v.size()){
       if(y==v.size())y=0;
       lati[x] = std::sqrt((std::pow((v[y].get_X()-v[x].get_X()),2)+std::pow(v[y].get_Y()-v[x].get_Y(),2)));
@@ -36,15 +36,15 @@ void Triangolo::set_lati(const vector<Vertice>& v){
     }
 }
 
-string Triangolo::toString() const{
-  string s ="Triangolo: ";
+QString Triangolo::toString() const{
+  QString s ="Triangolo: ";
   for(auto it=Lista.begin();it!=Lista.end();it++){
     s+= it->toString();
     }
   return s;
 }
 
-string Triangolo::get_nomeClasse()const{
+QString Triangolo::get_nomeClasse()const{
     return "Triangolo";
 }
 
