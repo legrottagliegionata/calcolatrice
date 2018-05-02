@@ -12,7 +12,7 @@ int main(int argc, char *argv[])
 {
   //QCoreApplication a(argc, argv);
 
-  vector<Vertice> P= { Vertice(-2,3) , Vertice(-2,4),Vertice(3,4),Vertice(3,1),Vertice(2,0),Vertice(-1,0),Vertice(0,-1),Vertice(0.5,9),Vertice(1.1,8) };
+  vector<Vertice> P= { Vertice(-2,3) , Vertice(-2,4),Vertice(3,4),Vertice(3,1),Vertice(2.8,0),Vertice(-1,0),Vertice(0,-1),Vertice(0.5,9),Vertice(1,9),Vertice(2.8,8),Vertice(1,-1) };
 
     try{
       PoligonoConvesso *p = crea_poligono(P);
