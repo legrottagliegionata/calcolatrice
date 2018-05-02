@@ -23,7 +23,11 @@ SOURCES += main.cpp \
     shape.cpp \
     quadrilatero.cpp \
     pentagono.cpp \
-    esagono.cpp
+    esagono.cpp \
+    ettagono.cpp \
+    ottagono.cpp \
+    ennagono.cpp \
+    decagono.cpp
 
 HEADERS += \
     punto.h \
@@ -33,4 +37,8 @@ HEADERS += \
     shape.h \
     quadrilatero.h \
     pentagono.h \
-    esagono.h
+    esagono.h \
+    ettagono.h \
+    ottagono.h \
+    ennagono.h \
+    decagono.h

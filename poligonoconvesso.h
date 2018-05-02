@@ -4,6 +4,8 @@
 #include "shape.h"
 #include <stdexcept>
 #include <algorithm>
+
+
 using std::vector;
 
 class PoligonoConvesso : public Shape
@@ -23,6 +25,7 @@ public:
 protected:
   virtual void set_lati(const vector<Vertice>&) =0;
   std::vector<Vertice> Lista;
+
 
 };
 

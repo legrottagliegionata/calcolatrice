@@ -24,9 +24,12 @@ std::ostream& operator<< (std::ostream& os,const Triangolo& T){
 }
 
 void Triangolo::set_lati(const vector<Vertice>& v){
-  lati[0] = std::sqrt((std::pow((v[1].get_X()-v[0].get_X()),2)+std::pow(v[1].get_Y()-v[0].get_Y(),2)));
-  lati[1] = std::sqrt((std::pow((v[2].get_X()-v[0].get_X()),2)+std::pow(v[2].get_Y()-v[0].get_Y(),2)));
-  lati[2] = std::sqrt((std::pow((v[2].get_X()-v[1].get_X()),2)+std::pow(v[2].get_Y()-v[1].get_Y(),2)));
+  unsigned int x=0,y=1;
+  while(x<v.size()){
+      if(y==v.size())y=0;
+      lati[x] = std::sqrt((std::pow((v[y].get_X()-v[x].get_X()),2)+std::pow(v[y].get_Y()-v[x].get_Y(),2)));
+      x++; y++;
+    }
 }
 
 string Triangolo::toString() const{
@@ -34,7 +37,6 @@ string Triangolo::toString() const{
   for(auto it=Lista.begin();it!=Lista.end();it++){
     s+= it->toString();
     }
-  s+= " Lati ab:"+to_string_nozero(lati[0])+ ", bc:"+to_string_nozero(lati[1])+ ", ca:"+to_string_nozero(lati[2]);
   return s;
 }
 
