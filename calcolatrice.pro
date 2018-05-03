@@ -15,58 +15,60 @@ QMAKE_CXXFLAGS += -std=c++11
 # You can also select to disable deprecated APIs only up to a certain version of Qt.
 #DEFINES += QT_DISABLE_DEPRECATED_BEFORE=0x060000    # disables all the APIs deprecated before Qt 6.0.0
 
-SOURCES += main.cpp \
-    punto.cpp \
-    vertice.cpp \
-    poligonoconvesso.cpp \
-    triangolo.cpp \
-    shape.cpp \
+SOURCES +=\
+    PoligoniConvessi/decagono.cpp \
+    PoligoniConvessi/ennagono.cpp \
+    PoligoniConvessi/esagono.cpp \
+    PoligoniConvessi/ettagono.cpp \
+    PoligoniConvessi/ottagono.cpp \
+    PoligoniConvessi/pentagono.cpp \
+    PoligoniConvessi/quadrilatero.cpp \
+    PoligoniConvessi/triangolo.cpp \
     main.cpp \
     poligono.cpp \
     poligonoconvesso.cpp \
     punto.cpp \
     shape.cpp \
     vertice.cpp \
-    PoligonoConvessi/decagono.cpp \
-    PoligonoConvessi/ennagono.cpp \
-    PoligonoConvessi/esagono.cpp \
-    PoligonoConvessi/ettagono.cpp \
-    PoligonoConvessi/ottagono.cpp \
-    PoligonoConvessi/pentagono.cpp \
-    PoligonoConvessi/quadrilatero.cpp \
-    PoligonoConvessi/triangolo.cpp \
-    main.cpp \
-    poligono.cpp \
-    poligonoconvesso.cpp \
-    punto.cpp \
-    shape.cpp \
-    vertice.cpp
+    PoligoniConvessi/endecagono.cpp \
+    PoligoniConvessi/dodecagono.cpp \
+    PoligoniConvessi/tridecagono.cpp \
+    PoligoniConvessi/tetradecagono.cpp \
+    PoligoniConvessi/pentadecagono.cpp \
+    PoligoniConvessi/esadecagono.cpp \
+    PoligoniConvessi/eptadecagono.cpp \
+    PoligoniConvessi/ottadecagono.cpp \
+    PoligoniConvessi/ennadecagono.cpp \
+    PoligoniConvessi/icosagono.cpp \
+    cerchio.cpp
 
 
 HEADERS += \
-    punto.h \
-    vertice.h \
     poligonoconvesso.h \
-    shape.h \
     poligono.h \
-    poligono.h \
-    poligonoconvesso.h \
     punto.h \
     shape.h \
     vertice.h \
-    PoligonoConvessi/decagono.h \
-    PoligonoConvessi/ennagono.h \
-    PoligonoConvessi/esagono.h \
-    PoligonoConvessi/ettagono.h \
-    PoligonoConvessi/ottagono.h \
-    PoligonoConvessi/pentagono.h \
-    PoligonoConvessi/quadrilatero.h \
-    PoligonoConvessi/triangolo.h \
-    poligono.h \
-    poligonoconvesso.h \
-    punto.h \
-    shape.h \
-    vertice.h
+    PoligoniConvessi/decagono.h \
+    PoligoniConvessi/ennagono.h \
+    PoligoniConvessi/esagono.h \
+    PoligoniConvessi/ettagono.h \
+    PoligoniConvessi/ottagono.h \
+    PoligoniConvessi/pentagono.h \
+    PoligoniConvessi/quadrilatero.h \
+    PoligoniConvessi/triangolo.h \
+    PoligoniConvessi/endecagono.h \
+    PoligoniConvessi/dodecagono.h \
+    PoligoniConvessi/tridecagono.h \
+    PoligoniConvessi/tetradecagono.h \
+    PoligoniConvessi/pentadecagono.h \
+    PoligoniConvessi/esadecagono.h \
+    PoligoniConvessi/eptadecagono.h \
+    PoligoniConvessi/ottadecagono.h \
+    PoligoniConvessi/ennadecagono.h \
+    PoligoniConvessi/icosagono.h \
+    cerchio.h
+
 
 SUBDIRS += \
     calcolatrice.pro

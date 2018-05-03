@@ -16,13 +16,13 @@ class Shape
     protected:
             static void reduce_n_shape();
             unsigned int id=0;
-            virtual string toString() const =0;
 
     public:
             Shape(const Shape&);
             virtual ~Shape()=default;
             Shape();
             unsigned int get_id() const;
+            virtual string toString() const =0;
     private:
             static unsigned int n_shape;
 

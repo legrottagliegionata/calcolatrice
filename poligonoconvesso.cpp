@@ -1,12 +1,22 @@
 #include "poligonoconvesso.h"
-#include "triangolo.h"
-#include "quadrilatero.h"
-#include "pentagono.h"
-#include "esagono.h"
-#include "ettagono.h"
-#include "ottagono.h"
-#include "ennagono.h"
-#include "decagono.h"
+#include "PoligoniConvessi/triangolo.h"
+#include "PoligoniConvessi/quadrilatero.h"
+#include "PoligoniConvessi/pentagono.h"
+#include "PoligoniConvessi/esagono.h"
+#include "PoligoniConvessi/ettagono.h"
+#include "PoligoniConvessi/ottagono.h"
+#include "PoligoniConvessi/ennagono.h"
+#include "PoligoniConvessi/decagono.h"
+#include "PoligoniConvessi/endecagono.h"
+#include "PoligoniConvessi/dodecagono.h"
+#include "PoligoniConvessi/tridecagono.h"
+#include "PoligoniConvessi/tetradecagono.h"
+#include "PoligoniConvessi/pentadecagono.h"
+#include "PoligoniConvessi/esadecagono.h"
+#include "PoligoniConvessi/eptadecagono.h"
+#include "PoligoniConvessi/ottadecagono.h"
+#include "PoligoniConvessi/ennadecagono.h"
+#include "PoligoniConvessi/icosagono.h"
 PoligonoConvesso::PoligonoConvesso(){}
 PoligonoConvesso::PoligonoConvesso(const PoligonoConvesso& p):Poligono(),Lista(p.Lista){}
 PoligonoConvesso::PoligonoConvesso(const vector<Vertice>& V, unsigned int x, std::string name):Poligono(),Lista(V){
@@ -180,7 +190,7 @@ PoligonoConvesso* crea_poligono(vector<Vertice>& V){
 
   try{
    const_cast<vector<Vertice>&>(V) =grahamScan(const_cast<vector<Vertice>&>(V));
-    if(V.size()>10) throw  std::invalid_argument("Nel modello non è incluso un poligono di queste dimensioni");
+    if(V.size()>20) throw  std::invalid_argument("Nel modello non è incluso un poligono di queste dimensioni");
    V=grahamScan(V);
    switch (V.size()) {
      case 3:
@@ -206,6 +216,36 @@ PoligonoConvesso* crea_poligono(vector<Vertice>& V){
        break;
      case 10:
        return new Decagono(V);
+       break;
+     case 11:
+       return new Endecagono(V);
+       break;
+     case 12:
+       return new Dodecagono(V);
+       break;
+     case 13:
+       return new Tridecagono(V);
+       break;
+     case 14:
+       return new Tetradecagono(V);
+       break;
+     case 15:
+       return new Pentadecagono(V);
+       break;
+     case 16:
+       return new Esadecagono(V);
+       break;
+     case 17:
+       return new Eptadecagono(V);
+       break;
+     case 18:
+       return new Ottadecagono(V);
+       break;
+     case 19:
+       return new Ennadecagono(V);
+       break;
+     case 20:
+       return new Icosagono(V);
        break;
 
      default:
@@ -225,6 +265,7 @@ PoligonoConvesso* crea_poligono(PoligonoConvesso* P){
   try{
    vector<Vertice> V = P->get_vertici();
    V=grahamScan(V);
+   if(V.size()>20) throw  std::invalid_argument("Nel modello non è incluso un poligono di queste dimensioni");
    switch (V.size()) {
      case 3:
        return new Triangolo(V);
@@ -250,7 +291,36 @@ PoligonoConvesso* crea_poligono(PoligonoConvesso* P){
      case 10:
        return new Decagono(V);
        break;
-
+     case 11:
+       return new Endecagono(V);
+       break;
+     case 12:
+       return new Dodecagono(V);
+       break;
+     case 13:
+       return new Tridecagono(V);
+       break;
+     case 14:
+       return new Tetradecagono(V);
+       break;
+     case 15:
+       return new Pentadecagono(V);
+       break;
+     case 16:
+       return new Esadecagono(V);
+       break;
+     case 17:
+       return new Eptadecagono(V);
+       break;
+     case 18:
+       return new Ottadecagono(V);
+       break;
+     case 19:
+       return new Ennadecagono(V);
+       break;
+     case 20:
+       return new Icosagono(V);
+       break;
      default:
        throw  std::invalid_argument("Impossibile creare un poligono di questa dimensione");
        break;

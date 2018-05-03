@@ -2,8 +2,8 @@
 
 #include<iostream>
 #include"poligonoconvesso.h"
-#include"triangolo.h"
-#include"quadrilatero.h"
+#include"cerchio.h"
+
 using namespace std;
 
 using std::cout;
@@ -18,11 +18,16 @@ int main(int argc, char *argv[])
     try{
       PoligonoConvesso *p = crea_poligono(P);
       PoligonoConvesso *t = crea_poligono(Q);
-      Poligono *q= *p - *t;
-      cout<<endl<<*p<<endl<<endl;
-      cout<<*t<<endl<<endl;
-      cout<<*q<<endl;
-    }
+      PoligonoConvesso *q=*static_cast<PoligonoConvesso*>(p) - *static_cast<PoligonoConvesso*>(t);
+
+
+      cout<<endl;
+      Shape *c = new Cerchio(Vertice(1,4),9);
+      vector<Shape*> S = {p , t , q , c};
+      for(int i=0;i<S.size();i++){
+          cout<<S[i]->toString()<<endl;
+        }
+  }
     catch(std::invalid_argument& e){
       std::cerr << e.what() << std::endl;
     }

@@ -14,6 +14,7 @@ bool Punto::operator<(const Punto& p)const{
       return y < p.y;
   return x < p.x;
 }
+
 std::string Punto::toString()const{
   return std::string("(" + to_string_nozero(x) + "," + to_string_nozero(y)+ ")");
 }
@@ -24,8 +25,8 @@ double distanza(const Punto& p1, const Punto& p2)
     return sqrt( dX + dY );
 }
 
-std::ostream& operator<<(std::ostream& os,Punto& p){
-        return os<<"("<<p.get_X()<<","<<p.get_Y()<<")";
+std::ostream& operator<<(std::ostream& os,const Punto& p){
+        return os<<p.toString();
 }
 
 std::string to_string_nozero(double a){
