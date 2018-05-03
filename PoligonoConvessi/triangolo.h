@@ -1,6 +1,6 @@
 #ifndef TRIANGOLO_H
 #define TRIANGOLO_H
-#include "poligonoconvesso.h"
+#include "./poligonoconvesso.h"
 class Triangolo: public PoligonoConvesso
 {
   friend std::ostream& operator<< (std::ostream&,const Triangolo&);

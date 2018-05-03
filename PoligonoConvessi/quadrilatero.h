@@ -1,7 +1,7 @@
 #ifndef QUADRILATERO_H
 #define QUADRILATERO_H
 #define _USE_MATH_DEFINES
-#include "poligonoconvesso.h"
+#include "./poligonoconvesso.h"
 class Quadrilatero: public PoligonoConvesso
 {
   friend std::ostream& operator<< (std::ostream&,const Quadrilatero&);

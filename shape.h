@@ -26,10 +26,6 @@ class Shape
     private:
             static unsigned int n_shape;
 
-            /*virtual bool operator==(const Poligono&)const ;
-            virtual bool operator!=(const Poligono&)const ;
-            virtual Poligono& operator+(const Poligono&);
-            virtual Poligono& operator-(const Poligono&);*/
 };
 
 #endif // SHAPE_H

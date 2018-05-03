@@ -1,7 +1,7 @@
 #ifndef Esagono_H
 #define Esagono_H
 
-#include "poligonoconvesso.h"
+#include "./poligonoconvesso.h"
 class Esagono: public PoligonoConvesso
 {
   friend std::ostream& operator<< (std::ostream&,const Esagono&);

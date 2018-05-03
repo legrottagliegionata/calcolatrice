@@ -1,9 +1,7 @@
 #ifndef ETTAGONO_H
 #define ETTAGONO_H
 
-
-
-#include "poligonoconvesso.h"
+#include "./poligonoconvesso.h"
 class Ettagono: public PoligonoConvesso
 {
   friend std::ostream& operator<< (std::ostream&,const Ettagono&);

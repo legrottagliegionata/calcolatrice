@@ -21,24 +21,54 @@ SOURCES += main.cpp \
     poligonoconvesso.cpp \
     triangolo.cpp \
     shape.cpp \
-    quadrilatero.cpp \
-    pentagono.cpp \
-    esagono.cpp \
-    ettagono.cpp \
-    ottagono.cpp \
-    ennagono.cpp \
-    decagono.cpp
+    main.cpp \
+    poligono.cpp \
+    poligonoconvesso.cpp \
+    punto.cpp \
+    shape.cpp \
+    vertice.cpp \
+    PoligonoConvessi/decagono.cpp \
+    PoligonoConvessi/ennagono.cpp \
+    PoligonoConvessi/esagono.cpp \
+    PoligonoConvessi/ettagono.cpp \
+    PoligonoConvessi/ottagono.cpp \
+    PoligonoConvessi/pentagono.cpp \
+    PoligonoConvessi/quadrilatero.cpp \
+    PoligonoConvessi/triangolo.cpp \
+    main.cpp \
+    poligono.cpp \
+    poligonoconvesso.cpp \
+    punto.cpp \
+    shape.cpp \
+    vertice.cpp
+
 
 HEADERS += \
     punto.h \
     vertice.h \
     poligonoconvesso.h \
-    triangolo.h \
     shape.h \
-    quadrilatero.h \
-    pentagono.h \
-    esagono.h \
-    ettagono.h \
-    ottagono.h \
-    ennagono.h \
-    decagono.h \
+    poligono.h \
+    poligono.h \
+    poligonoconvesso.h \
+    punto.h \
+    shape.h \
+    vertice.h \
+    PoligonoConvessi/decagono.h \
+    PoligonoConvessi/ennagono.h \
+    PoligonoConvessi/esagono.h \
+    PoligonoConvessi/ettagono.h \
+    PoligonoConvessi/ottagono.h \
+    PoligonoConvessi/pentagono.h \
+    PoligonoConvessi/quadrilatero.h \
+    PoligonoConvessi/triangolo.h \
+    poligono.h \
+    poligonoconvesso.h \
+    punto.h \
+    shape.h \
+    vertice.h
+
+SUBDIRS += \
+    calcolatrice.pro
+
+DISTFILES +=

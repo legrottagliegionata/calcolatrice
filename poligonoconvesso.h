@@ -1,14 +1,14 @@
 #ifndef POLIGONOCONVESSO_H
 #define POLIGONOCONVESSO_H
 
-#include "shape.h"
+#include "poligono.h"
 #include <stdexcept>
 #include <algorithm>
 
 
 using std::vector;
 
-class PoligonoConvesso : public Shape
+class PoligonoConvesso : public Poligono
 {
 public:
   PoligonoConvesso();
@@ -28,7 +28,8 @@ protected:
 
 
 };
-
+PoligonoConvesso* operator+(const PoligonoConvesso&,const PoligonoConvesso&);
+PoligonoConvesso* operator-(const PoligonoConvesso&,const PoligonoConvesso&);
 vector<Vertice> grahamScan(vector<Vertice>&);
 bool POLAR_ORDER(Vertice, Vertice);
 double sqrDist(Vertice, Vertice);

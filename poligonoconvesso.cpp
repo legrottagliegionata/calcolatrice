@@ -8,8 +8,8 @@
 #include "ennagono.h"
 #include "decagono.h"
 PoligonoConvesso::PoligonoConvesso(){}
-PoligonoConvesso::PoligonoConvesso(const PoligonoConvesso& p):Shape(),Lista(p.Lista){}
-PoligonoConvesso::PoligonoConvesso(const vector<Vertice>& V, unsigned int x, std::string name):Shape(),Lista(V){
+PoligonoConvesso::PoligonoConvesso(const PoligonoConvesso& p):Poligono(),Lista(p.Lista){}
+PoligonoConvesso::PoligonoConvesso(const vector<Vertice>& V, unsigned int x, std::string name):Poligono(),Lista(V){
   const_cast<vector<Vertice>&>(V) = grahamScan(const_cast<vector<Vertice>&>(V));
   if(V.size() == x){
       Lista = V;
@@ -48,6 +48,32 @@ PoligonoConvesso* PoligonoConvesso::rimuovi_vertice(const Vertice& v){
 }
 
 vector<Vertice> PoligonoConvesso::get_vertici()const{return Lista;}
+
+PoligonoConvesso* operator+(const PoligonoConvesso& p1,const PoligonoConvesso& p2){
+    vector<Vertice> V(p1.get_vertici());
+    vector<Vertice> V2(p2.get_vertici());
+    for(auto it=V2.begin();it!=V2.end();it++){
+        V.push_back(*it);
+    }
+    return crea_poligono(V);
+}
+
+PoligonoConvesso* operator-(const PoligonoConvesso& p1,const PoligonoConvesso& p2){
+  vector<Vertice> v1(p1.get_vertici());
+  vector<Vertice> v2(p2.get_vertici());
+  for(auto it2=v2.begin();it2!=v2.end();it2++){
+      bool found=false;
+      for(auto it1=v1.begin();it1!=v1.end() && !found && v1.size() >= 3;it1++){
+          if(*it1 == *it2)
+            {
+              v1.erase(it1);
+              it1--;
+              found = true;
+            }
+        }
+    }
+  return crea_poligono(v1);
+}
 
 // Le prossime funzioni vengono utilizzate per filtrare il vector<Vertice> che viene utilizzato per costruire
 // un poligono. Vengono rimossi tutti i vertici che non possono far parte del poligono, ad esempio i punti interni.
