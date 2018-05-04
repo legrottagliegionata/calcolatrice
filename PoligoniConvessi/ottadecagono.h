@@ -1,5 +1,6 @@
 #ifndef OTTADECAGONO_H
 #define OTTADECAGONO_H
+
 #include "poligonoconvesso.h"
 class Ottadecagono: public PoligonoConvesso
 {
@@ -13,7 +14,7 @@ public:
   virtual double get_perimetro() const;
   virtual double get_area() const;
   virtual string toString() const;
-
+  string get_nomeClasse() const;
 protected:
   double lati[18];
 private:

@@ -45,3 +45,6 @@ string Ottagono::toString() const{
     }
   return s;
 }
+string Ottagono::get_nomeClasse()const{
+    return "Ottagono";
+}

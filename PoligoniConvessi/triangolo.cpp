@@ -44,4 +44,8 @@ string Triangolo::toString() const{
   return s;
 }
 
+string Triangolo::get_nomeClasse()const{
+    return "Triangolo";
+}
+
 

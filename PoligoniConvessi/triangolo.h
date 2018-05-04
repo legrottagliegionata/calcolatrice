@@ -9,13 +9,11 @@ class Triangolo: public PoligonoConvesso
 
 public:
   Triangolo(const Triangolo&);
-
-  //virtual double get_altezza(const Vertice&)const;
+  Triangolo(const vector<Vertice>&);
   virtual double get_perimetro() const;
   virtual double get_area() const;
-  Triangolo(const vector<Vertice>&);
   virtual string toString() const;
-
+  string get_nomeClasse() const;
 protected:
   double lati[3];
 

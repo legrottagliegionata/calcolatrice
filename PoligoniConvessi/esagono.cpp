@@ -45,3 +45,6 @@ string Esagono::toString() const{
     }
   return s;
 }
+string Esagono::get_nomeClasse()const{
+    return "Esagono";
+}

@@ -15,9 +15,19 @@ class Cerchio : public Shape
 		void set_origine(const Vertice&);
 		double get_perimetro()const;
 		double get_area()const;
+        string get_nomeClasse() const;
 		string toString() const;
-		//Cerchio operator+ ()
+        Cerchio& operator+= (double);
+        Cerchio& operator =(const Cerchio&);
+
 };
 std::ostream& operator<<(std::ostream&,const Cerchio&);
-
+Cerchio operator+(const Cerchio&,double);
+Cerchio operator-(const Cerchio&,double);
+bool operator==(const Cerchio&,const Cerchio&);
+bool operator!=(const Cerchio&,const Cerchio&);
+bool operator<(const Cerchio&,const Cerchio&);
+bool operator>(const Cerchio&,const Cerchio&);
+bool operator<=(const Cerchio&,const Cerchio&);
+bool operator>=(const Cerchio&,const Cerchio&);
 #endif // CERCHIO_H

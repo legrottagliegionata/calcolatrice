@@ -14,7 +14,7 @@ public:
   virtual double get_area() const;
   Pentagono(const vector<Vertice>&);
   virtual string toString() const;
-
+  string get_nomeClasse() const;
 protected:
   double lati[5];
 private:

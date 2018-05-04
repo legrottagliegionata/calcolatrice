@@ -46,3 +46,6 @@ string Tetradecagono::toString() const{
     }
   return s;
 }
+string Tetradecagono::get_nomeClasse()const{
+    return "Tetradecagono";
+}

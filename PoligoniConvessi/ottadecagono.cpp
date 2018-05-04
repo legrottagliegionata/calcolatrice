@@ -46,3 +46,6 @@ string Ottadecagono::toString() const{
     }
   return s;
 }
+string Ottadecagono::get_nomeClasse()const{
+    return "Ottadecagono";
+}

@@ -45,3 +45,6 @@ string Esadecagono::toString() const{
     }
   return s;
 }
+string Esadecagono::get_nomeClasse()const{
+    return "Esadecagono";
+}

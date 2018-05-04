@@ -47,3 +47,6 @@ string Dodecagono::toString() const{
     }
   return s;
 }
+string Dodecagono::get_nomeClasse()const{
+    return "Dodecagono";
+}

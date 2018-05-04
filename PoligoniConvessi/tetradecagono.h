@@ -1,7 +1,6 @@
 #ifndef TETRADECAGONO_H
 #define TETRADECAGONO_H
 
-
 #include "poligonoconvesso.h"
 class Tetradecagono: public PoligonoConvesso
 {
@@ -15,7 +14,7 @@ public:
   virtual double get_perimetro() const;
   virtual double get_area() const;
   virtual string toString() const;
-
+  string get_nomeClasse() const;
 protected:
   double lati[14];
 private:

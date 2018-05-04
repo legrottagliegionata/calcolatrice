@@ -24,10 +24,14 @@ int main(int argc, char *argv[])
       cout<<endl;
       Shape *c = new Cerchio(Vertice(1,4),9);
       vector<Shape*> S = {p , t , q , c};
-      for(int i=0;i<S.size();i++){
+      for(unsigned int i=0;i<S.size();i++){
           cout<<S[i]->toString()<<endl;
         }
-  }
+      cout<<endl<<endl;
+      Cerchio a(Vertice(0,0),5);
+      Cerchio b = a - 4 ;
+      cout<<"B: "<<b<<endl<<"A: "<<a<<endl;
+    }
     catch(std::invalid_argument& e){
       std::cerr << e.what() << std::endl;
     }

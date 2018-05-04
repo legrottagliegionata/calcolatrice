@@ -46,3 +46,6 @@ string Pentadecagono::toString() const{
     }
   return s;
 }
+string Pentadecagono::get_nomeClasse()const{
+    return "Pentadecagono";
+}

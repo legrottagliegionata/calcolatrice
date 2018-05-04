@@ -42,3 +42,6 @@ string Pentagono::toString() const{
   return s;
 }
 
+string Pentagono::get_nomeClasse()const{
+    return "Pentagono";
+}

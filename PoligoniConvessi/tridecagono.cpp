@@ -46,3 +46,6 @@ string Tridecagono::toString() const{
     }
   return s;
 }
+string Tridecagono::get_nomeClasse()const{
+    return "Tridecagono";
+}

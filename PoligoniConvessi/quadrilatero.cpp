@@ -41,3 +41,6 @@ void Quadrilatero::set_lati(const vector<Vertice>& v){
       x++; y++;
     }
 }
+string Quadrilatero::get_nomeClasse()const{
+    return "Quadrilatero";
+}

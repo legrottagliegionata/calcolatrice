@@ -13,5 +13,6 @@ class Vertice: public Punto
 		std::string toString() const;
 		static double get_Angolo(const Vertice&, const Punto&, const Punto &);
 
+
 };
 #endif // VERTICE_H

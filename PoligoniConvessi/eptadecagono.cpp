@@ -45,3 +45,6 @@ string Eptadecagono::toString() const{
     }
   return s;
 }
+string Eptadecagono::get_nomeClasse()const{
+    return "Eptadecagono";
+}

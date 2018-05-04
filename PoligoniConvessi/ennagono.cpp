@@ -46,3 +46,6 @@ string Ennagono::toString() const{
     }
   return s;
 }
+string Ennagono::get_nomeClasse()const{
+    return "Ennagono";
+}

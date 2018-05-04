@@ -46,3 +46,6 @@ string Ettagono::toString() const{
     }
   return s;
 }
+string Ettagono::get_nomeClasse()const{
+    return "Ettagono";
+}

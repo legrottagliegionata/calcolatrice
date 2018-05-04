@@ -23,8 +23,10 @@ class Shape
             Shape();
             unsigned int get_id() const;
             virtual string toString() const =0;
+            virtual string get_nomeClasse() const=0;
     private:
             static unsigned int n_shape;
+
 
 };
 

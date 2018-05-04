@@ -46,3 +46,6 @@ string Endecagono::toString() const{
     }
   return s;
 }
+string Endecagono::get_nomeClasse()const{
+    return "Endecagono";
+}

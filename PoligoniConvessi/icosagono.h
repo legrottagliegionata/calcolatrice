@@ -14,7 +14,7 @@ public:
   virtual double get_perimetro() const;
   virtual double get_area() const;
   virtual string toString() const;
-
+  string get_nomeClasse() const;
 protected:
   double lati[20];
 private:

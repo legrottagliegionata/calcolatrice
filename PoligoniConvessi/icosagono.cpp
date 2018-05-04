@@ -47,3 +47,6 @@ string Icosagono::toString() const{
     }
   return s;
 }
+string Icosagono::get_nomeClasse()const{
+    return "Icosagono";
+}
