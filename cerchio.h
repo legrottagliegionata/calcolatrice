@@ -16,6 +16,7 @@ class Cerchio : public Shape
 		double get_perimetro()const;
 		double get_area()const;
 		string toString() const;
+		//Cerchio operator+ ()
 };
 std::ostream& operator<<(std::ostream&,const Cerchio&);
 

@@ -1,11 +1,12 @@
 #ifndef PENTADECAGONO_H
 #define PENTADECAGONO_H
 
-
-#include "./poligonoconvesso.h"
+#include "poligonoconvesso.h"
 class Pentadecagono: public PoligonoConvesso
 {
   friend std::ostream& operator<< (std::ostream&,const Pentadecagono&);
+  friend  PoligonoConvesso* PoligonoConvesso::crea_poligono(PoligonoConvesso*);
+  friend  PoligonoConvesso* PoligonoConvesso::crea_poligono(vector<Vertice>&);
 
 public:
   Pentadecagono(const Pentadecagono&);
@@ -18,6 +19,8 @@ protected:
   double lati[15];
 private:
   void set_lati(const vector<Vertice>&);
+  Pentadecagono(const vector<Vertice>&,bool);
+
 };
 
 

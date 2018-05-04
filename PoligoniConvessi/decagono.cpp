@@ -8,6 +8,9 @@ Decagono::Decagono(const Decagono & T):PoligonoConvesso(T){set_lati(T.Lista);}
 Decagono::Decagono(const vector<Vertice>&V):PoligonoConvesso(V,10,"Decagono"){
       set_lati(V);
 }
+Decagono::Decagono(const vector<Vertice>&V,bool b):PoligonoConvesso(V,10,"Decagono",b){
+      set_lati(V);
+}
 
 double Decagono::get_perimetro()const{
   return lati[0]+lati[1]+lati[2]+lati[3]+lati[4]+lati[5]+lati[6]+lati[7]+lati[8]+lati[9];

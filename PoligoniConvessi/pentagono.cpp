@@ -6,6 +6,9 @@ Pentagono::Pentagono(const Pentagono & T):PoligonoConvesso(T){set_lati(T.Lista);
 Pentagono::Pentagono(const vector<Vertice>&V):PoligonoConvesso(V,5,"Pentagono"){
       set_lati(V);
 }
+Pentagono::Pentagono(const vector<Vertice>&V,bool b):PoligonoConvesso(V,5,"Pentagono",b){
+      set_lati(V);
+}
 
 double Pentagono::get_perimetro()const{
   return lati[0]+lati[1]+lati[2]+lati[3]+lati[4];

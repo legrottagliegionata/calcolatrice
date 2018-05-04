@@ -8,7 +8,9 @@ Pentadecagono::Pentadecagono(const Pentadecagono & T):PoligonoConvesso(T){set_la
 Pentadecagono::Pentadecagono(const vector<Vertice>&V):PoligonoConvesso(V,15,"Pentadecagono"){
       set_lati(V);
 }
-
+Pentadecagono::Pentadecagono(const vector<Vertice>&V,bool b):PoligonoConvesso(V,15,"Pentadecagono",b){
+      set_lati(V);
+}
 double Pentadecagono::get_perimetro()const{
   return lati[0]+lati[1]+lati[2]+lati[3]+lati[4]+lati[5]+lati[6]+lati[7]+lati[8]+lati[9]+lati[10]+lati[11]+lati[12]+lati[13]+lati[14];
 }

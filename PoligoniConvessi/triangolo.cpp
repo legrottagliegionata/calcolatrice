@@ -7,6 +7,10 @@ Triangolo::Triangolo(const vector<Vertice>&V):PoligonoConvesso(V,3,"Triangolo"){
       set_lati(V);
 }
 
+Triangolo::Triangolo(const vector<Vertice>&V,bool b):PoligonoConvesso(V,3,"Triangolo",b){
+      set_lati(V);
+}
+
 double Triangolo::get_perimetro()const{
   return lati[0]+lati[1]+lati[2];
 }

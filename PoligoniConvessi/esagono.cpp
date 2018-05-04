@@ -7,7 +7,9 @@ Esagono::Esagono(const Esagono & T):PoligonoConvesso(T){set_lati(T.Lista);}
 Esagono::Esagono(const vector<Vertice>&V):PoligonoConvesso(V,6,"Esagono"){
       set_lati(V);
 }
-
+Esagono::Esagono(const vector<Vertice>&V,bool b):PoligonoConvesso(V,6,"Esagono",b){
+      set_lati(V);
+}
 double Esagono::get_perimetro()const{
   return lati[0]+lati[1]+lati[2]+lati[3]+lati[4]+lati[5];
 }

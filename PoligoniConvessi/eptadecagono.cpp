@@ -7,7 +7,9 @@ Eptadecagono::Eptadecagono(const Eptadecagono & T):PoligonoConvesso(T){set_lati(
 Eptadecagono::Eptadecagono(const vector<Vertice>&V):PoligonoConvesso(V,17,"Eptadecagono"){
       set_lati(V);
 }
-
+Eptadecagono::Eptadecagono(const vector<Vertice>&V,bool b):PoligonoConvesso(V,17,"Eptadecagono",b){
+      set_lati(V);
+}
 double Eptadecagono::get_perimetro()const{
   return lati[0]+lati[1]+lati[2]+lati[3]+lati[4]+lati[5]+lati[6]+lati[7]+lati[8]+lati[9]+lati[10]+lati[11]+lati[12]+lati[13]+lati[14]+lati[15]+lati[16];
 }

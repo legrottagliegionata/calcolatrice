@@ -16,8 +16,8 @@ int main(int argc, char *argv[])
 
   vector<Vertice> Q={Vertice(3,4),Vertice(3,1),Vertice(2.8,0)};
     try{
-      PoligonoConvesso *p = crea_poligono(P);
-      PoligonoConvesso *t = crea_poligono(Q);
+      PoligonoConvesso *p = PoligonoConvesso::crea_poligono(P);
+      PoligonoConvesso *t = PoligonoConvesso::crea_poligono(Q);
       PoligonoConvesso *q=*static_cast<PoligonoConvesso*>(p) - *static_cast<PoligonoConvesso*>(t);
 
 

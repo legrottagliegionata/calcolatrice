@@ -8,7 +8,9 @@ Tridecagono::Tridecagono(const Tridecagono & T):PoligonoConvesso(T){set_lati(T.L
 Tridecagono::Tridecagono(const vector<Vertice>&V):PoligonoConvesso(V,13,"Tridecagono"){
       set_lati(V);
 }
-
+Tridecagono::Tridecagono(const vector<Vertice>&V,bool b):PoligonoConvesso(V,13,"Tridecagono",b){
+      set_lati(V);
+}
 double Tridecagono::get_perimetro()const{
   return lati[0]+lati[1]+lati[2]+lati[3]+lati[4]+lati[5]+lati[6]+lati[7]+lati[8]+lati[9]+lati[10]+lati[11]+lati[12];
 }

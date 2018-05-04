@@ -7,7 +7,9 @@ Esadecagono::Esadecagono(const Esadecagono & T):PoligonoConvesso(T){set_lati(T.L
 Esadecagono::Esadecagono(const vector<Vertice>&V):PoligonoConvesso(V,16,"Esadecagono"){
       set_lati(V);
 }
-
+Esadecagono::Esadecagono(const vector<Vertice>&V,bool b):PoligonoConvesso(V,16,"Esadecagono",b){
+      set_lati(V);
+}
 double Esadecagono::get_perimetro()const{
   return lati[0]+lati[1]+lati[2]+lati[3]+lati[4]+lati[5]+lati[6]+lati[7]+lati[8]+lati[9]+lati[10]+lati[11]+lati[12]+lati[13]+lati[14]+lati[15];
 }

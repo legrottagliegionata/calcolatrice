@@ -7,6 +7,9 @@ Ettagono::Ettagono(const Ettagono & T):PoligonoConvesso(T){set_lati(T.Lista);}
 Ettagono::Ettagono(const vector<Vertice>&V):PoligonoConvesso(V,7,"Ettagono"){
       set_lati(V);
 }
+Ettagono::Ettagono(const vector<Vertice>&V,bool b):PoligonoConvesso(V,7,"Ettagono",b){
+      set_lati(V);
+}
 
 double Ettagono::get_perimetro()const{
   return lati[0]+lati[1]+lati[2]+lati[3]+lati[4]+lati[5]+lati[6];

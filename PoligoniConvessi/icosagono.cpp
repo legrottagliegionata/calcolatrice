@@ -8,6 +8,9 @@ Icosagono::Icosagono(const Icosagono & T):PoligonoConvesso(T){set_lati(T.Lista);
 Icosagono::Icosagono(const vector<Vertice>&V):PoligonoConvesso(V,20,"Icosagono"){
       set_lati(V);
 }
+Icosagono::Icosagono(const vector<Vertice>&V,bool b):PoligonoConvesso(V,20,"Icosagono",b){
+      set_lati(V);
+}
 
 double Icosagono::get_perimetro()const{
   return lati[0]+lati[1]+lati[2]+lati[3]+lati[4]+lati[5]+lati[6]+lati[7]+lati[8]+lati[9]+lati[10]+lati[11]+lati[12]+lati[13]+lati[14]+lati[15]+lati[16]+lati[17]+lati[18]+lati[19];

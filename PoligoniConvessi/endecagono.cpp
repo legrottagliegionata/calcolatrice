@@ -8,7 +8,9 @@ Endecagono::Endecagono(const Endecagono & T):PoligonoConvesso(T){set_lati(T.List
 Endecagono::Endecagono(const vector<Vertice>&V):PoligonoConvesso(V,11,"Endecagono"){
       set_lati(V);
 }
-
+Endecagono::Endecagono(const vector<Vertice>&V,bool b):PoligonoConvesso(V,11,"Endecagono",b){
+      set_lati(V);
+}
 double Endecagono::get_perimetro()const{
   return lati[0]+lati[1]+lati[2]+lati[3]+lati[4]+lati[5]+lati[6]+lati[7]+lati[8]+lati[9]+lati[10];
 }

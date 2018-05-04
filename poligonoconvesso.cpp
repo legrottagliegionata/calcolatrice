@@ -28,17 +28,29 @@ PoligonoConvesso::PoligonoConvesso(const vector<Vertice>& V, unsigned int x, std
       throw  std::invalid_argument("Impossibile creare un "+ name +" utilizzando questi vertici");
     }
 }
+
+PoligonoConvesso::PoligonoConvesso(const vector<Vertice>& V, unsigned int x, std::string name,bool check):Poligono(),Lista(V){
+
+  if(check){
+      if(V.size() == x){
+          Lista = V;
+        }else{
+          reduce_n_shape();
+          throw  std::invalid_argument("Impossibile creare un "+ name +" utilizzando questi vertici");
+        }
+    }
+
+}
 unsigned int PoligonoConvesso::size()const{return Lista.size();}
 
-PoligonoConvesso* PoligonoConvesso::aggiungi_vertice(const Vertice& v){
+PoligonoConvesso* PoligonoConvesso::aggiungi_vertice(Vertice v) const{
   vector<Vertice> newVector(Lista);
   newVector.push_back(v);
-  return crea_poligono(newVector);
+  return PoligonoConvesso::crea_poligono(newVector);
 }
 
-PoligonoConvesso* PoligonoConvesso::rimuovi_vertice(const Vertice& v){
+PoligonoConvesso* PoligonoConvesso::rimuovi_vertice(Vertice v)const{
   bool found = false;
-
   vector<Vertice> V(Lista);
   auto it = V.begin();
   for(; it != V.end() && !found; ){
@@ -48,7 +60,7 @@ PoligonoConvesso* PoligonoConvesso::rimuovi_vertice(const Vertice& v){
     }
   if(found){
       V.erase(it);
-      return crea_poligono(V);
+      return PoligonoConvesso::crea_poligono(V);
 
     }
   else{
@@ -65,7 +77,7 @@ PoligonoConvesso* operator+(const PoligonoConvesso& p1,const PoligonoConvesso& p
     for(auto it=V2.begin();it!=V2.end();it++){
         V.push_back(*it);
     }
-    return crea_poligono(V);
+    return PoligonoConvesso::crea_poligono(V);
 }
 
 PoligonoConvesso* operator-(const PoligonoConvesso& p1,const PoligonoConvesso& p2){
@@ -82,7 +94,7 @@ PoligonoConvesso* operator-(const PoligonoConvesso& p1,const PoligonoConvesso& p
             }
         }
     }
-  return crea_poligono(v1);
+  return PoligonoConvesso::crea_poligono(v1);
 }
 
 // Le prossime funzioni vengono utilizzate per filtrare il vector<Vertice> che viene utilizzato per costruire
@@ -90,7 +102,7 @@ PoligonoConvesso* operator-(const PoligonoConvesso& p1,const PoligonoConvesso& p
 
 Vertice pivot;
 
-double ccw(Vertice a, Vertice b, Vertice c) {
+double PoligonoConvesso::ccw(Vertice a, Vertice b, Vertice c) {
     double area = (b.get_X() - a.get_X()) * (c.get_Y() - a.get_Y()) - (b.get_Y() - a.get_Y()) * (c.get_X() - a.get_X());
     if (area > 0)
         return -1;
@@ -100,19 +112,19 @@ double ccw(Vertice a, Vertice b, Vertice c) {
 }
 
 // restituisce il quadrato della distanza euclidea tra due punti
-double sqrDist(Vertice a, Vertice b)  {
+double PoligonoConvesso::sqrDist(Vertice a, Vertice b)  {
     double dx = a.get_X() - b.get_X(), dy = a.get_Y() - b.get_Y();
     return dx * dx + dy * dy;
 }
 // ordinamento dei punti in ordine polare
-bool POLAR_ORDER(Vertice a, Vertice b)  {
+bool PoligonoConvesso::POLAR_ORDER(Vertice a, Vertice b)  {
     double order = ccw(pivot, a, b);
     if (order == 0)
         return sqrDist(pivot, a) < sqrDist(pivot, b);
     return (order == -1);
 }
 // controllo che la somma di tutti gli angoli non superi il massimo consentito.
-bool checkVector(vector<Vertice>&Points){
+bool PoligonoConvesso::checkVector(vector<Vertice>&Points){
   double somma=0;
   unsigned int b=0;
   for(auto itb=Points.begin(); itb != Points.end();itb++){
@@ -120,7 +132,7 @@ bool checkVector(vector<Vertice>&Points){
       if(b==0) {a=Points.size()-1; c=b+1;}
       else if(b==Points.size()-1){c=0; a=b-1;}
       else {a=b-1; c=b+1;}
-      double angolo=  get_Angolo(Points[b],Points[a],Points[c]);
+      double angolo=  Vertice::get_Angolo(Points[b],Points[a],Points[c]);
       if(angolo == 180) {
           Points.erase(itb);
           angolo=0;
@@ -135,14 +147,14 @@ bool checkVector(vector<Vertice>&Points){
     return true;
 }
 //Rimuove eventuali vertici doppioni
-void rimuovi_doppioni(vector<Vertice>& V ){
+void PoligonoConvesso::rimuovi_doppioni(vector<Vertice>& V ){
   for(auto i=V.begin();i!= V.end();i++){
       for(auto j=i+1; j!=V.end();j++){
           if(*i==*j) {V.erase(j); j--;}
         }
     }
 }
-vector<Vertice> grahamScan(vector<Vertice>& Points)    {
+vector<Vertice> PoligonoConvesso::grahamScan(vector<Vertice>& Points)    {
 
     rimuovi_doppioni(Points);
     vector<Vertice> hull;
@@ -185,7 +197,7 @@ vector<Vertice> grahamScan(vector<Vertice>& Points)    {
     return hull;
 }
 
-PoligonoConvesso* crea_poligono(vector<Vertice>& V){
+PoligonoConvesso* PoligonoConvesso::crea_poligono(vector<Vertice>& V){
   // ricevo un vettore di vertici, elimino eventuali vertici inutili, e se 3 <= N <=X costruisco un poligono
 
   try{
@@ -194,58 +206,58 @@ PoligonoConvesso* crea_poligono(vector<Vertice>& V){
    V=grahamScan(V);
    switch (V.size()) {
      case 3:
-       return new Triangolo(V);
+       return new Triangolo(V,true);
        break;
      case 4:
-       return new Quadrilatero(V);
+       return new Quadrilatero(V,true);
        break;
      case 5:
-       return new Pentagono(V);
+       return new Pentagono(V,true);
        break;
      case 6:
-       return new Esagono(V);
+       return new Esagono(V,true);
        break;
      case 7:
-       return new Ettagono(V);
+       return new Ettagono(V,true);
        break;
      case 8:
-       return new Ottagono(V);
+       return new Ottagono(V,true);
        break;
      case 9:
-       return new Ennagono(V);
+       return new Ennagono(V,true);
        break;
      case 10:
-       return new Decagono(V);
+       return new Decagono(V,true);
        break;
      case 11:
-       return new Endecagono(V);
+       return new Endecagono(V,true);
        break;
      case 12:
-       return new Dodecagono(V);
+       return new Dodecagono(V,true);
        break;
      case 13:
-       return new Tridecagono(V);
+       return new Tridecagono(V,true);
        break;
      case 14:
-       return new Tetradecagono(V);
+       return new Tetradecagono(V,true);
        break;
      case 15:
-       return new Pentadecagono(V);
+       return new Pentadecagono(V,true);
        break;
      case 16:
-       return new Esadecagono(V);
+       return new Esadecagono(V,true);
        break;
      case 17:
-       return new Eptadecagono(V);
+       return new Eptadecagono(V,true);
        break;
      case 18:
-       return new Ottadecagono(V);
+       return new Ottadecagono(V,true);
        break;
      case 19:
-       return new Ennadecagono(V);
+       return new Ennadecagono(V,true);
        break;
      case 20:
-       return new Icosagono(V);
+       return new Icosagono(V,true);
        break;
 
      default:
@@ -259,7 +271,7 @@ PoligonoConvesso* crea_poligono(vector<Vertice>& V){
   return 0;
 }
 
-PoligonoConvesso* crea_poligono(PoligonoConvesso* P){
+PoligonoConvesso* PoligonoConvesso::crea_poligono(PoligonoConvesso* P){
   // ricevo un vettore di vertici, elimino eventuali vertici inutili, e se 3 <= N <=X costruisco un poligono
 
   try{
@@ -268,58 +280,58 @@ PoligonoConvesso* crea_poligono(PoligonoConvesso* P){
    if(V.size()>20) throw  std::invalid_argument("Nel modello non è incluso un poligono di queste dimensioni");
    switch (V.size()) {
      case 3:
-       return new Triangolo(V);
+       return new Triangolo(V,true);
        break;
      case 4:
-       return new Quadrilatero(V);
+       return new Quadrilatero(V,true);
        break;
      case 5:
-       return new Pentagono(V);
+       return new Pentagono(V,true);
        break;
      case 6:
-       return new Esagono(V);
+       return new Esagono(V,true);
        break;
      case 7:
-       return new Ettagono(V);
+       return new Ettagono(V,true);
        break;
      case 8:
-       return new Ottagono(V);
+       return new Ottagono(V,true);
        break;
      case 9:
-       return new Ennagono(V);
+       return new Ennagono(V,true);
        break;
      case 10:
-       return new Decagono(V);
+       return new Decagono(V,true);
        break;
      case 11:
-       return new Endecagono(V);
+       return new Endecagono(V,true);
        break;
      case 12:
-       return new Dodecagono(V);
+       return new Dodecagono(V,true);
        break;
      case 13:
-       return new Tridecagono(V);
+       return new Tridecagono(V,true);
        break;
      case 14:
-       return new Tetradecagono(V);
+       return new Tetradecagono(V,true);
        break;
      case 15:
-       return new Pentadecagono(V);
+       return new Pentadecagono(V,true);
        break;
      case 16:
-       return new Esadecagono(V);
+       return new Esadecagono(V,true);
        break;
      case 17:
-       return new Eptadecagono(V);
+       return new Eptadecagono(V,true);
        break;
      case 18:
-       return new Ottadecagono(V);
+       return new Ottadecagono(V,true);
        break;
      case 19:
-       return new Ennadecagono(V);
+       return new Ennadecagono(V,true);
        break;
      case 20:
-       return new Icosagono(V);
+       return new Icosagono(V,true);
        break;
      default:
        throw  std::invalid_argument("Impossibile creare un poligono di questa dimensione");

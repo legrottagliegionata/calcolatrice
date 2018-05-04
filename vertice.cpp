@@ -2,7 +2,7 @@
 Vertice::Vertice(double a,double b):Punto::Punto(a,b){}
 Vertice::Vertice(const Vertice& v):Punto::Punto(v){}
 // calcolo dell'angolo del vertice b
-double get_Angolo(const Vertice &b, const Punto &a, const Punto &c){
+double Vertice::get_Angolo(const Vertice &b, const Punto &a, const Punto &c){
     Punto ab( b.get_X() - a.get_X(), b.get_Y() - a.get_Y() );
     Punto cb( b.get_X() - c.get_X(), b.get_Y() - c.get_Y() );
 

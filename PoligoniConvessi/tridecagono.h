@@ -2,10 +2,12 @@
 #define TRIDECAGONO_H
 
 
-#include "./poligonoconvesso.h"
+#include "poligonoconvesso.h"
 class Tridecagono: public PoligonoConvesso
 {
   friend std::ostream& operator<< (std::ostream&,const Tridecagono&);
+  friend  PoligonoConvesso* PoligonoConvesso::crea_poligono(PoligonoConvesso*);
+  friend  PoligonoConvesso* PoligonoConvesso::crea_poligono(vector<Vertice>&);
 
 public:
   Tridecagono(const Tridecagono&);
@@ -18,6 +20,8 @@ protected:
   double lati[13];
 private:
   void set_lati(const vector<Vertice>&);
+  Tridecagono(const vector<Vertice>&,bool);
+
 };
 
 #endif // TRIDECAGONO_H
