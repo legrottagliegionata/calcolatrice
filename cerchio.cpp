@@ -33,20 +33,36 @@ Cerchio operator-(const Cerchio& c,double x){
         return c;
     }
 }
-bool operator==(const Cerchio& c1,const Cerchio& c2){
-    return c1.get_origine() == c2.get_origine() && c1.get_raggio() == c2.get_raggio();
+Cerchio operator*(const Cerchio& c,double x){
+    if((c.get_raggio() * x) > 0)
+        return Cerchio(c.get_origine(),c.get_raggio()*x);
+    else{
+        throw  std::invalid_argument("Non puoi avere un raggio negativo");
+        return c;
+    }
 }
-bool operator<(const Cerchio& c1,const Cerchio& c2){
-    return c1.get_raggio() < c2.get_raggio();
+Cerchio operator/(const Cerchio& c,double x){
+    if((c.get_raggio() / x) > 0)
+        return Cerchio(c.get_origine(),c.get_raggio()/x);
+    else{
+        throw  std::invalid_argument("Non puoi avere un raggio negativo");
+        return c;
+    }
 }
-bool operator>(const Cerchio& c1,const Cerchio& c2){
-    return c1.get_raggio() > c2.get_raggio();
+bool Cerchio::operator==(const Cerchio& c2)const{
+    return origine == c2.origine && raggio == c2.raggio;
 }
-bool operator<=(const Cerchio& c1,const Cerchio& c2){
-    return c1.get_raggio() <= c2.get_raggio();
+bool Cerchio::operator<(const Cerchio& c2)const{
+    return raggio < c2.raggio;
 }
-bool operator>=(const Cerchio& c1,const Cerchio& c2){
-    return c1.get_raggio() >= c2.get_raggio();
+bool Cerchio::operator>(const Cerchio& c2)const{
+  return raggio > c2.raggio;
+}
+bool Cerchio::operator<=(const Cerchio& c2)const{
+  return raggio <= c2.raggio;
+}
+bool Cerchio::operator>=(const Cerchio& c2)const{
+  return raggio >= c2.raggio;
 }
 Cerchio& Cerchio::operator =(const Cerchio& c){
     origine=c.origine;

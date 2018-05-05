@@ -19,15 +19,18 @@ class Cerchio : public Shape
 		string toString() const;
         Cerchio& operator+= (double);
         Cerchio& operator =(const Cerchio&);
+        bool operator==(const Cerchio&)const;
+        bool operator!=(const Cerchio&)const;
+        bool operator<(const Cerchio&)const;
+        bool operator>(const Cerchio&)const;
+        bool operator<=(const Cerchio&)const;
+        bool operator>=(const Cerchio&)const;
 
 };
 std::ostream& operator<<(std::ostream&,const Cerchio&);
 Cerchio operator+(const Cerchio&,double);
 Cerchio operator-(const Cerchio&,double);
-bool operator==(const Cerchio&,const Cerchio&);
-bool operator!=(const Cerchio&,const Cerchio&);
-bool operator<(const Cerchio&,const Cerchio&);
-bool operator>(const Cerchio&,const Cerchio&);
-bool operator<=(const Cerchio&,const Cerchio&);
-bool operator>=(const Cerchio&,const Cerchio&);
+Cerchio operator*(const Cerchio&,double);
+Cerchio operator/(const Cerchio&,double);
+
 #endif // CERCHIO_H

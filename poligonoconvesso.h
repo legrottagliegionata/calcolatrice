@@ -25,6 +25,9 @@ public:
   PoligonoConvesso* aggiungi_vertice(Vertice)const;
   PoligonoConvesso* rimuovi_vertice(Vertice)const;
 
+  virtual bool operator ==(const PoligonoConvesso&);
+  virtual bool operator !=(const PoligonoConvesso&);
+
 protected:
   virtual void set_lati(const vector<Vertice>&) =0;
   std::vector<Vertice> Lista;

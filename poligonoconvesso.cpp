@@ -97,6 +97,25 @@ PoligonoConvesso* operator-(const PoligonoConvesso& p1,const PoligonoConvesso& p
   return PoligonoConvesso::crea_poligono(v1);
 }
 
+bool PoligonoConvesso::operator ==(const PoligonoConvesso& p){
+  int i;
+  if(Lista.size() == p.size()) i=Lista.size();
+  else return false;
+  for(int j=0;j<i;j++){
+      if(Lista[i]!=p.Lista[i]) return false;
+    }
+  return true;
+}
+bool PoligonoConvesso::operator !=(const PoligonoConvesso& p){
+  int i;
+  if(Lista.size() == p.size()) i=Lista.size();
+  else return false;
+  for(int j=0;j<i;j++){
+      if(Lista[i]!=p.Lista[i]) return true;
+    }
+  return false;
+}
+
 // Le prossime funzioni vengono utilizzate per filtrare il vector<Vertice> che viene utilizzato per costruire
 // un poligono. Vengono rimossi tutti i vertici che non possono far parte del poligono, ad esempio i punti interni.
 

@@ -8,6 +8,7 @@ using namespace std;
 
 using std::cout;
 
+
 int main(int argc, char *argv[])
 {
   //QCoreApplication a(argc, argv);
