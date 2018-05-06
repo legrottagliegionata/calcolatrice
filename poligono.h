@@ -13,6 +13,7 @@ public:
   virtual Poligono* aggiungi_vertice(Vertice)const=0;
   virtual Poligono* rimuovi_vertice(Vertice)const=0;
   virtual std::vector<Vertice> get_vertici()const=0;
+
 };
 
 #endif // POLIGONO_H
